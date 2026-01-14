@@ -1,0 +1,114 @@
+
+/* Amabara y'Ibendera ry'u Rwanda */
+:root {
+  --rw-blue: #00a1de;
+  --rw-green: #006838;
+  --rw-yellow: #f9e300;
+  --white: #ffffff;
+  --bg-light: #f4f4f4;
+  --text-color: #333;
+}
+
+.admin-dashboard-layout {
+  display: flex;
+  min-height: 80vh;
+  width: 102%;
+  margin-left:-2%;
+
+}
+
+.admin-sidebar {
+  width: 250px;
+  background-color: var(--rw-green); /* Green sidebar */
+  color: var(--white);
+  padding: 20px;
+  margin-top:5.5%;
+}
+
+.admin-sidebar h2 {
+  color: var(--rw-yellow);
+  margin-bottom: 20px;
+}
+
+.admin-nav button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 10px;
+  background: none;
+  border: none;
+  color: var(--white);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-nav button:hover, .admin-nav button.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.admin-content {
+  flex-grow: 1;
+   margin-top:5.5%;
+  padding: 40px;
+  background-color: var(--bg-light);
+}
+
+.admin-form-container {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-form-container input, .admin-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.admin-btn-primary {
+    background-color: var(--rw-blue);
+    color: var(--white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.admin-btn-secondary {
+     background-color: var(--rw-yellow);
+    color: var(--text-color);
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .admin-dashboard-layout {
+        flex-direction: column;
+    }
+    .admin-sidebar {
+        width: 95%;
+        margin-top:10%;
+        display: flex;
+        margin-left:-2%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .admin-nav button {
+        width: auto;
+        margin: 5px;
+    }
+    .admin-content {
+        padding: 20px;
+    }
+}
+

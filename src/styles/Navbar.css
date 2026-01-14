@@ -1,0 +1,188 @@
+
+/* Amabara y'Ibendera ry'u Rwanda */
+:root {
+  --rw-blue: #00a1de;
+  --rw-green: #006838;
+  --rw-yellow: #f9e300;
+  --white: #ffffff;
+  --text-color: #333;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: var(--rw-green); /* Primary blue color */
+  color: var(--white);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  margin-left: -3%;
+  margin-top: -1%;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Logo and Brand Name */
+.brand-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+  height: 40px; /* Size ya logo */
+  margin-right: 10px;
+  border-radius: 50%; /* If you want a circle logo */
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Search Bar Styling */
+.search {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 5px 15px;
+  flex-grow: 0.5; /* It take half of remaining space */
+  max-width: 400px;
+}
+
+.search input {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  padding: 5px;
+  width: 100%;
+}
+
+.search input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.search-icon {
+  color: var(--rw-yellow);
+}
+
+/* Navigation Menu */
+nav ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+nav ul li a {
+  color: var(--white);
+  padding: 10px 15px;
+  text-decoration: none;
+  display: flex;
+  margin-left:-6%;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--rw-yellow); /* Yellow on hover */
+}
+
+/* Active link style for NavLink (from react-router-dom) */
+nav ul li .active {
+    font-weight: bold;
+    color: var(--rw-yellow);
+    border-bottom: 2px solid var(--rw-yellow);
+    padding-bottom: 8px;
+}
+
+
+/* Call to Action Button in Nav */
+.cta-button-nav {
+    background-color: var(--rw-blue); /* Green button */
+    border-radius: 5px;
+    margin-left: -9%;
+    padding: 8px 16px !important;
+}
+
+.cta-button-nav:hover {
+    background-color:blue;
+}
+
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none; /* Hides on desktop */
+  font-size: 1.8rem;
+  margin-top: -8%;
+  cursor: pointer;
+}
+
+.menu-toggle .icon {
+    position: absolute;
+    transition: opacity 0.3s ease;
+    color:blue;
+}
+
+.menu-toggle .icon.hidden {
+    opacity: 0;
+    color:blue;
+}
+
+.menu-toggle .icon.active {
+    opacity: 1;
+    color:blue;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 10px 20px;
+    margin-top:-2%;
+  }
+  .search {
+    display: none; /* Hide search bar on tablets/mobile for simplicity */
+  }
+  .menu-toggle {
+    display: block; /* Show hamburger menu */
+  }
+
+  nav ul {
+    display: none; /* Hide standard menu */
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--rw-blue);
+    position: absolute;
+    top: 60px; /* Below the navbar */
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+  }
+
+  nav ul.active {
+    display: flex; /* Show menu when active class is added by React State */
+  }
+
+  nav ul li {
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  nav ul li:last-child {
+    border-bottom: none;
+  }
+  
+  nav ul li a {
+    padding: 15px;
+    justify-content: center;
+  }
+
+  .cta-button-nav {
+      margin-left: 0;
+      margin-top: 10px;
+  }
+}
+

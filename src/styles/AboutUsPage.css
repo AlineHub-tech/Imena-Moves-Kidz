@@ -1,0 +1,169 @@
+
+/* Amabara y'Ibendera ry'u Rwanda */
+:root {
+  --rw-blue: #00a1de;
+  --rw-green: #006838;
+  --rw-yellow: #f9e300;
+  --white: #ffffff;
+  --bg-light: #f4f4f4;
+  --text-color: #333;
+}
+
+/* General Container and Resets */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.about-us-container section {
+  padding: 60px 0;
+  
+}
+
+.about-us-container h1, .about-us-container h2 {
+  color: var(--rw-green);
+  text-align: center;
+  
+}
+
+/* --- Hero Section Styles --- */
+.about-hero {
+  background-color: var(--rw-blue);
+  color: var(--white);
+  padding: 100px 0;
+  width: 105.6%;
+  margin-left:-5%;
+  text-align: center;
+}
+
+.about-hero-inner h1 {
+    color: var(--rw-yellow);
+    font-size: 3rem;
+}
+
+.about-hero-inner p {
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* --- Mission, Vision, Values (MVV) Cards --- */
+.mvv-section {
+    background-color: var(--bg-light);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.mvv-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.mvv-card:hover {
+    transform: translateY(-5px);
+}
+
+.mvv-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.blue-icon { color: var(--rw-blue); }
+.green-icon { color: var(--rw-green); }
+.yellow-icon { color: var(--rw-yellow); }
+
+/* --- Team Section --- */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.team-card {
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.team-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.team-card h3 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+.team-role {
+  color: var(--rw-blue);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.team-bio {
+    padding: 0 20px 15px 20px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.team-contact {
+    background-color: var(--bg-light);
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+.team-contact p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+
+/* --- Contact Section --- */
+.contact-section {
+    text-align: center;
+    background-color: var(--white);
+}
+
+.contact-details p {
+    font-size: 1.1rem;
+    margin: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 20px;
+}
+
+.contact-icon {
+    color: var(--rw-blue);
+}
+
+
+/* --- Responsive Styles --- */
+@media (max-width: 768px) {
+    .about-hero-inner h1 {
+        font-size: 2rem;
+    }
+    .contact-details p {
+        display: flex;
+        margin: 10px 0;
+    }
+}

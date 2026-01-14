@@ -1,0 +1,177 @@
+
+
+/* Amabara y'Ibendera ry'u Rwanda */
+:root {
+  --rw-blue: #00a1de;
+  --rw-green: #006838;
+  --rw-yellow: #f9e300;
+  --white: #ffffff;
+  --text-color: #333;
+}
+
+
+/* General Button Styles (ensure these are available globally or here) */
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+.primary-btn { background-color: var(--rw-yellow); color: var(--text-color); font-weight: bold; }
+.primary-btn:hover { background-color: #ffda44; }
+
+
+/* Slider Container */
+.hero-slider-container {
+  position: relative;
+  width: 101.6%;
+  overflow: hidden;
+  margin-left: -1%;
+  height: 85vh; /* Responsive height */
+  margin-top:-5.5%; /* Ibi byemeza ko itagoheka na fixed navbar (ifite 70px height) */
+}
+
+.slide-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+   background-size: cover;
+  background-position: center;
+  transition: background-image 0.5s ease-in-out; /* Smooth transition when image changes */
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Overlay y'amabara ya flag kugira ngo amagambo agaragare neza */
+    background-color: rgba(0, 0, 0, 0.678);
+}
+
+.slide-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  color: var(--white);
+  position: relative; /* Kuri z-index */
+}
+
+.hero-text-area {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-text-area h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 10px;
+}
+
+.hero-text-area p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* Slider Promo Area (Ku ruhande rw'iburyo) */
+.slider-promo-area {
+    flex: 0 0 350px; /* Width ihagaze */
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 25px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px); /* Akanyenyeri keza */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.slider-promo-area h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--rw-yellow);
+}
+
+.promo-icon {
+    font-size: 1.8rem;
+}
+
+/* Slider Controls (Utubuto n'utudomo) */
+.slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.slider-controls button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: var(--white);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.slider-controls button:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dot.active {
+  background: var(--rw-yellow);
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .slide-content {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .slider-promo-area {
+    margin-top: 20px;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 400px;
+  }
+  .hero-slider-container {
+        height: 70vh;
+  margin-top:-21.5%;
+        width:103.6%;
+        margin-left: -2%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-slider-container {
+        height: 70vh;
+        margin-top:-21.5%;
+        width:103.6%;
+        margin-left: -2%;
+    }
+    .hero-text-area h1 {
+        font-size: 2rem;
+    }
+}
+

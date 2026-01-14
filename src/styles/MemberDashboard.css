@@ -1,0 +1,90 @@
+
+/* Amabara y'Ibendera ry'u Rwanda */
+:root {
+  --rw-blue: #00a1de;
+  --rw-green: #006838;
+  --rw-yellow: #f9e300;
+  --white: #ffffff;
+  --bg-light: #f4f4f4;
+  --text-color: #333;
+}
+
+.member-dashboard-layout {
+    /* padding: 40px 20px; */
+    /* Adjust for fixed navbar */
+    min-height: 80vh;
+   
+}
+
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-card h3 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.stat-card.blue { border-bottom: 4px solid var(--rw-blue); }
+.stat-card.green { border-bottom: 4px solid var(--rw-green); }
+.stat-card.present { border-bottom: 4px solid #28a745; /* Success color */ }
+.stat-card.absent { border-bottom: 4px solid #dc3545; /* Danger color */ }
+
+.stat-card .icon {
+    font-size: 2.5rem;
+    color: var(--rw-blue); /* Default icon color */
+}
+.stat-card.present .icon { color: #28a745; }
+.stat-card.absent .icon { color: #dc3545; }
+
+
+.update-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.announcements-section h3 {
+    margin-bottom: 15px;
+    color: var(--rw-green);
+}
+
+.announcement-card {
+    background: var(--white);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border-left: 5px solid var(--rw-blue);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-card h4 {
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.announcement-date {
+    font-size: 0.8rem;
+    color: #999;
+    display: block;
+    margin-top: 10px;
+}
+
+

@@ -1,0 +1,17 @@
+
+/* ... (Maintain all existing CSS code from previous response) ... */
+
+/* New styles for pages and router links */
+.page-content {
+  padding: 80px 20px 40px 20px; /* Ensures content is below the fixed navbar */
+  min-height: 60vh; /* Kureshya page hagati ya navbar na footer */
+  text-align: center;
+}
+
+/* Style for the active link in the navbar (e.g., when on the Dashboard page) */
+/* Note: Depending on React Router version, 'active' class is automatic for NavLink */
+.nav ul li .active-link {
+    color: var(--rw-yellow) !important; 
+    border-bottom: 2px solid var(--rw-yellow);
+    padding-bottom: 8px; /* Adjustment for bottom border style */
+}

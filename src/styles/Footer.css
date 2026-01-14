@@ -1,0 +1,92 @@
+
+/* Amabara y'Ibendera ry'u Rwanda */
+:root {
+    --rw-blue: #00a1de;
+    --rw-green: #006838;
+    --rw-yellow: #f9e300;
+    --white: #ffffff;
+}
+
+/* General reset for Footer context */
+.footer a { color: var(--white); }
+
+.footer {
+    background-color: var(--rw-green);
+    color: white;
+  width: 102.6%;
+  margin-left:-2%;
+  margin-top:6%;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 2%;
+    padding-bottom: 20px;
+    
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin: 15px 0;
+}
+
+.footer-section h3 {
+    color: var(--rw-yellow);
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-section svg {
+    margin-right: 10px;
+    color: var(--rw-blue);
+}
+
+.footer-section ul li a:hover {
+    color: var(--rw-yellow);
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--rw-yellow);
+}
+
+.bottom-bar {
+    background-color: rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+}
+
+.subscribe-form { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.subscribe-form input { padding: 10px; border-radius: 5px; border: none; }
+.subscribe-form button { padding: 10px; background-color: var(--rw-blue); color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+.subscribe-form button:hover { background-color: #00a1dee6; }
+
+/* Responsive for Footer */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer{
+  width: 103.6%;
+  margin-left:-2%;
+  margin-top:6%;
+    }
+}
