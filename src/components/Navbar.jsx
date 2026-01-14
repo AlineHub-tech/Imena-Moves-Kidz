@@ -2,7 +2,7 @@
 import React, { useState } from 'react'; 
 import { Link, NavLink } from 'react-router-dom';
 import { FaBars, FaTimes, FaUsers,FaHome,FaSignInAlt, FaTachometerAlt, FaSearch } from 'react-icons/fa';
-import '../styles/navbar.css'; 
+import '../styles/Navbar.css'; 
 // Emeza ko iyi path ariyo ihamagara ifoto yawe neza
 import profile from '../assets/profile.jpg'; 
 
@@ -53,3 +53,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
