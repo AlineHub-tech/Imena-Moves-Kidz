@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { FaUserPlus, FaClipboardCheck, FaHandshake, FaBullhorn, FaUsers } from 'react-icons/fa';
 import '../styles/AdminDashboard.css'; 
@@ -10,8 +9,6 @@ const AdminDashboard = () => {
   const [newMember, setNewMember] = useState({ name: '', phone: '', role: '' });
   const [newCollaborator, setNewCollaborator] = useState({ name: '', role: '' });
   const [newAnnouncement, setNewAnnouncement] = useState({ title: '', content: '' });
-
-  // Example functions (These would connect to your Backend API)
   const handleAddMember = (e) => { e.preventDefault(); console.log("Adding member:", newMember); alert("Member added (simulated)"); };
   const handleAddCollaborator = (e) => { e.preventDefault(); console.log("Adding collaborator:", newCollaborator); alert("Collaborator added (simulated)"); };
   const handleAddAnnouncement = (e) => { e.preventDefault(); console.log("Adding announcement:", newAnnouncement); alert("Announcement posted (simulated, to member dashboard)"); };
@@ -73,8 +70,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <Navbar /> {/* Navbar yashyizwe hejuru */}
-      {/* Container yose irimo margin top kugira ngo itagoheka na fixed navbar */}
+      <Navbar />
       <div className="admin-dashboard-layout" style={{ marginTop: '-1%' }}> 
         <aside className="admin-sidebar">
           <h2>Admin Panel</h2>
@@ -97,9 +93,10 @@ const AdminDashboard = () => {
           {renderContent()}
         </main>
       </div>
-      <Footer /> {/* Footer yashyizwe hasi */}
+      <Footer /> 
     </>
   );
 };
 
 export default AdminDashboard;
+
