@@ -3,7 +3,6 @@ import { FaEye, FaRocket, FaHandshake, FaEnvelope, FaPhone, FaMapMarkerAlt } fro
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/AboutUsPage.css'; 
-// Emeza ko import ikora neza kuri file nshya ya data
 import { teamMembers } from '../data/teamData'; 
 
 const AboutUsPage = () => {
@@ -11,8 +10,6 @@ const AboutUsPage = () => {
     <>
       <Navbar />
       <div className="about-us-container" style={{ marginTop: '10px' }}> 
-        
-        {/* --- Hero/Intro Section --- */}
         <section className="about-hero">
           <div className="container about-hero-inner">
             <h1>About Imena Moves</h1>
@@ -24,8 +21,6 @@ const AboutUsPage = () => {
             </p>
           </div>
         </section>
-
-        {/* --- Mission & Vision Cards Section --- */}
         <section className="mvv-section container">
           <div className="card-grid">
             <div className="mvv-card">
@@ -45,15 +40,12 @@ const AboutUsPage = () => {
             </div>
           </div>
         </section>
-
-        {/* --- The Team Section (Hano niho amafoto asomwa neza) --- */}
         <section className="team-section container">
           <h2>Meet the Team</h2>
           <div className="team-grid">
             {teamMembers.map(member => (
               <div key={member.id} className="team-card">
-                {/* Src iri gukoresha variable ya import ifitemo path y'ifoto */}
-                <img src={member.imgUrl} alt={member.name} className="team-img" /> 
+               <img src={member.imgUrl} alt={member.name} className="team-img" /> 
                 <h3>{member.name}</h3>
                 <p className="team-role">{member.role}</p>
                 <p className="team-bio">{member.bio}</p>
@@ -65,8 +57,6 @@ const AboutUsPage = () => {
             ))}
           </div>
         </section>
-
-        {/* --- Contact Info Section --- */}
         <section className="contact-section container">
             <h2>Get In Touch</h2>
             <div className="contact-details">
@@ -81,5 +71,6 @@ const AboutUsPage = () => {
     </>
   );
 };
+
 
 export default AboutUsPage;
