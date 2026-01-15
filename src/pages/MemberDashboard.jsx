@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FaUsers, FaHandshake, FaCheckCircle, FaTimesCircle, FaCalendarAlt, FaClock } from 'react-icons/fa';
 import '../styles/MemberDashboard.css'; 
@@ -6,7 +5,6 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 
 const MemberDashboard = () => {
-    // Simulated data
     const stats = {
         totalMembers: 45,
         totalCollaborators: 12,
@@ -22,14 +20,12 @@ const MemberDashboard = () => {
 
     return (
         <>
-            <Navbar /> {/* Navbar yashyizwe hejuru */}
-            {/* Container yose irimo margin top kugira ngo itagoheka na fixed navbar */}
+            <Navbar /> 
             <div className="member-dashboard-layout" style={{ marginTop: '-2%' }}> 
                    
                 <h2>Imena Moves Member Dashboard</h2>
                 <p>Welcome back! Here are the latest updates.</p>
-      
-                {/* Stats Cards */}
+    
                 <div className="stats-grid">
                     <div className="stat-card blue">
                         <FaUsers className="icon" />
@@ -54,9 +50,6 @@ const MemberDashboard = () => {
                 </div>
                 
                 <p className="update-info"><FaCalendarAlt /> <FaClock /> Last update: {stats.lastUpdated}</p>
-
-
-                {/* Announcements Section */}
                 <div className="announcements-section">
                     <h3>Latest Announcements</h3>
                     {announcements.map(ann => (
@@ -68,9 +61,10 @@ const MemberDashboard = () => {
                     ))}
                 </div>
             </div>
-            <Footer/> {/* Footer yashyizwe hasi */}
+            <Footer/> 
         </>
     );
 };
 
 export default MemberDashboard;
+
