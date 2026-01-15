@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FaFacebook, FaInstagram, FaYoutube, FaEnvelope, FaMapMarkerAlt, FaPhone,FaTiktok } from 'react-icons/fa';
-import '../styles/Footer.css'; // Importing specific CSS file
+import '../styles/Footer.css'; 
 
 const Footer = () => {
     return (
@@ -47,3 +47,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
