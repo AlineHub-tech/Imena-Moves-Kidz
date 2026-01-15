@@ -6,9 +6,6 @@ import SlideImg5 from '../assets/d5.jpg';
 import SlideImg1 from '../assets/d1.jpg'; 
 import SlideImg4 from '../assets/d4.jpg'; 
 import SlideImg3 from '../assets/d3.jpg'; 
-
-
-// Amakuru ajyanye na Imena Moves (Mu Cyongereza nkuko byifuzwa)
 const slidesData = [
  { title: 'Working Together', icon: FaStar, text: 'enjoyment,displine,love and action.', imageUrl: SlideImg5 },
   { title: 'Talent Development', icon: FaStar, text: 'Trainings and coaching programs for youth.', imageUrl: SlideImg1 },
@@ -33,7 +30,7 @@ const HeroSlider = () => {
   };
 
   const currentSlide = slidesData[index];
-  const IconComponent = currentSlide.icon; // Dynamic icon component
+  const IconComponent = currentSlide.icon;
 
   return (
     <section className="hero-slider-container">
@@ -42,7 +39,7 @@ const HeroSlider = () => {
         className="slide-background" 
         style={{ backgroundImage: `url(${currentSlide.imageUrl})` }}
       >
-        <div className="slide-overlay"> {/* Added overlay class for better visibility */}
+        <div className="slide-overlay">
             <div className="slide-content">
                 <div className="hero-text-area">
                     <h1>Welcome to Imena Moves</h1>
@@ -76,3 +73,4 @@ const HeroSlider = () => {
 };
 
 export default HeroSlider;
+
