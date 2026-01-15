@@ -3,29 +3,21 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { FaUsers, FaDumbbell, FaHandshake, FaMusic, FaCamera, FaStar } 
 from "react-icons/fa";
-// Import our standard components
 import Footer from "../components/Footer"; 
-import Navbar from "../components/Navbar"; // <-- SHYA HANO
+import Navbar from "../components/Navbar"; 
 import HeroSlider from "../components/HeroSlider"; 
 import "../styles/LandingPage.css";
-
-// import Logo from "../assets/Logo.png"; // If you have a real logo file
-
 export default function Landing(){
-  // Tuvanyeho isMenuOpen state hano kuko byose bigenewe muri Navbar component
   return (
     <div className="lp-root">
       
-      {/* --- DUHAMAGAYE COMPONENT YA NAVBAR HANO --- */}
       <Navbar />
 
       {/* Padding added so content doesn't hide behind fixed Navbar */}
       <div style={{ paddingTop: '70px' }}> 
-        {/* --- Hero Section (Now using the Slider Component) --- */}
         <section className="lp-hero-section-wrapper">
           <HeroSlider /> 
           
-          {/* Original highlights moved inside hero area for better UX */}
           <div className="lp-highlights container-h">
               <div className="hp">
                 <FaUsers className="hp-icon"/><span>Active Crew</span>
@@ -38,8 +30,6 @@ export default function Landing(){
               </div>
             </div>
         </section>
-
-        {/* --- Features Section --- */}
         <section id="features" className="lp-features container-h">
           <h2>What We Do</h2>
           <div className="features-grid">
@@ -69,8 +59,6 @@ export default function Landing(){
             </article>
           </div>
         </section>
-
-        {/* --- About Section --- */}
         <section id="about" className="lp-about container-h">
           <h2>About Imena Moves</h2>
           <p>
@@ -81,9 +69,8 @@ export default function Landing(){
           <Link to="/about" className="btn primary">Join Us</Link>
         </section>
       </div>
-
-      {/* --- DUHAMAGAYE COMPONENT YA FOOTER HANO --- */}
       <Footer />
     </div>
   );
 }
+
