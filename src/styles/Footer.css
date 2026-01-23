@@ -90,3 +90,17 @@
   margin-top:6%;
     }
 }
+.developer-name:hover {
+    color: #ffffff; 
+    text-decoration:none;
+}
+ a{
+text-decoration:none;
+color: #ff380b; 
+font-weight:bolder;
+}
+.developer-name {
+    color: #ff380b; 
+    font-weight:bolder;
+
+}
