@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FaFacebook, FaInstagram, FaYoutube, FaEnvelope, FaMapMarkerAlt, FaPhone,FaTiktok } from 'react-icons/fa';
-import '../styles/Footer.css'; 
+import '../styles/Footer.css'; // Importing specific CSS file
 
 const Footer = () => {
     return (
@@ -40,11 +40,10 @@ const Footer = () => {
                 </div>
             </div>
             <div className="bottom-bar">
-                <p>&copy; {new Date().getFullYear()} Imena Moves. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Imena Moves. All rights reserved.| Developed by <a href="https://aline-site-seven.vercel.app/"><span class="developer-name">Umugwaneza Aline</span></a></p>
             </div>
         </footer>
     );
 };
 
 export default Footer;
-
