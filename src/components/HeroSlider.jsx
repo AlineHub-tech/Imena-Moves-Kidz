@@ -1,26 +1,38 @@
-
-import React, { useEffect, useState, useCallback } from 'react';
-import { FaBolt, FaGift, FaAppleAlt, FaChevronLeft, FaChevronRight, FaPlayCircle, FaUsers, FaStar } from 'react-icons/fa';
+import React, { useState, useEffect, useCallback } from 'react';
+import { FaArrowRight, FaGem, FaStar, FaHeart } from 'react-icons/fa6';
 import '../styles/HeroSlider.css'; 
-import SlideImg5 from '../assets/d5.jpg'; 
-import SlideImg1 from '../assets/d1.jpg'; 
-import SlideImg4 from '../assets/d4.jpg'; 
-import SlideImg3 from '../assets/d3.jpg'; 
 
-
-// Amakuru ajyanye na Imena Moves (Mu Cyongereza nkuko byifuzwa)
-const slidesData = [
- { title: 'Working Together', icon: FaStar, text: 'enjoyment,displine,love and action.', imageUrl: SlideImg5 },
-  { title: 'Talent Development', icon: FaStar, text: 'Trainings and coaching programs for youth.', imageUrl: SlideImg1 },
-  { title: 'Creative Workshops', icon: FaUsers, text: 'Join our vibrant performing community today.', imageUrl: SlideImg4 },
-  { title: 'Collaboration & Shows', icon: FaPlayCircle, text: 'Partnering with brands for live events.', imageUrl: SlideImg3 },
+const sloganData = [
+  { 
+    title: 'Precision in Every Step of Movement', 
+    highlight: 'Discipline',
+    text: 'Building strong character and professional focus through motion arts.',
+    icon: <FaGem />
+  },
+  { 
+    title: 'Unlocking Creative Potential Without Limits', 
+    highlight: 'Action',
+    text: 'Producing breathtaking stage and screen performances that inspire.',
+    icon: <FaStar />
+  },
+  { 
+    title: 'Growing A Vibrant Community Together', 
+    highlight: 'Love',
+    text: 'Join Rwanda’s most dedicated network of artists and performers.',
+    icon: <FaHeart />
+  }
 ];
 
 const HeroSlider = () => {
   const [index, setIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const nextSlide = useCallback(() => {
-    setIndex(prev => (prev + 1) % slidesData.length);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIndex((prev) => (prev + 1) % sloganData.length);
+      setIsAnimating(false);
+    }, 600);
   }, []);
 
   useEffect(() => {
@@ -28,47 +40,47 @@ const HeroSlider = () => {
     return () => clearInterval(timer);
   }, [nextSlide]);
 
-  const prevSlide = () => {
-    setIndex(prev => (prev - 1 + slidesData.length) % slidesData.length);
-  };
-
-  const currentSlide = slidesData[index];
-  const IconComponent = currentSlide.icon; // Dynamic icon component
-
   return (
-    <section className="hero-slider-container">
-      
-      <div 
-        className="slide-background" 
-        style={{ backgroundImage: `url(${currentSlide.imageUrl})` }}
-      >
-        <div className="slide-overlay"> {/* Added overlay class for better visibility */}
-            <div className="slide-content">
-                <div className="hero-text-area">
-                    <h1>Welcome to Imena Moves</h1>
-                    <p>Reshaping motion arts in Rwanda with talent, discipline, and movement.</p>
-                    <button className="btn primary-btn">Learn More <i className="fas fa-arrow-right"></i></button>
-                </div>
+    <section className="modern-hero-section">
+      {/* Background Animated Gradient Shapes */}
+      <div className="gradient-sphere sphere-1"></div>
+      <div className="gradient-sphere sphere-2"></div>
 
-                <div className="slider-promo-area">
-                    <h2>
-                        <IconComponent className="promo-icon"/> {currentSlide.title}
-                    </h2>
-                    <p>{currentSlide.text}</p>
-                    <div className="slider-controls">
-                        <button onClick={prevSlide} aria-label="Previous Slide"><FaChevronLeft /></button>
-                        {slidesData.map((_, i) => (
-                          <span 
-                            key={i} 
-                            className={`dot ${i === index ? 'active' : ''}`} 
-                            onClick={() => setIndex(i)}
-                            aria-label={`Go to slide ${i + 1}`}
-                          ></span>
-                        ))}
-                        <button onClick={nextSlide} aria-label="Next Slide"><FaChevronRight /></button>
-                    </div>
-                </div>
+      <div className="container hs-wrapper">
+        <div className={`hs-content-box ${isAnimating ? 'slide-out' : 'slide-in'}`}>
+          
+          <div className="hs-badge-wrapper">
+             <span className="hs-mini-badge">THE IMENA EXPERIENCE</span>
+          </div>
+          
+          <h1 className="hs-main-title">
+            {sloganData[index].title} 
+            <span className="gradient-text"> {sloganData[index].highlight}</span>
+          </h1>
+          
+          <p className="hs-sub-text">
+            {sloganData[index].text}
+          </p>
+
+          <div className="hs-action-area">
+            <button className="hs-cta-main">
+              Join The Movement <FaArrowRight />
+            </button>
+            <div className="hs-feature-icon">
+              {sloganData[index].icon}
             </div>
+          </div>
+
+          {/* Progress Indicator */}
+          <div className="hs-pagination">
+            {sloganData.map((_, i) => (
+              <div 
+                key={i} 
+                className={`hs-line-dot ${i === index ? 'active' : ''}`}
+                onClick={() => setIndex(i)}
+              ></div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
