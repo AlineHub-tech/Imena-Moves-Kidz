@@ -5,6 +5,11 @@
   --white: #ffffff;
   --text-gray: #64748b;
   --text-dark: #1e293b;
+  
+  --emerald: #03412c;
+  --royal-blue: #3b82f6;
+  --deep-purple: #8b5cf6;
+  --dark-void: #020617;
 }
 
 .page-wrapper {
@@ -27,9 +32,11 @@
 
 /* Hero Section */
 .about-hero {
-  background: linear-gradient(135deg, var(--primary-blue), #2563eb);
+  background: linear-gradient(to right, var(--emerald), var(--royal-blue), var(--deep-purple));
   color: white;
   padding: 80px 0;
+  width: 103.6%;
+  margin-left:-3%;
   text-align: center;
 }
 
