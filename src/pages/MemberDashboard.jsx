@@ -1,158 +1,122 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { 
-    FaUsers, 
-    FaHandshake, 
-    FaCheckCircle, 
-    FaTimesCircle, 
-    FaCalendarAlt, 
-    FaClock, 
-    FaBullhorn 
-} from 'react-icons/fa';
-import '../styles/MemberDashboard.css'; 
-import Footer from "../components/Footer"; 
-import Navbar from "../components/Navbar";
+import '../styles/MemberDashboard.css';
 
-// HINDURA IYI LINK USHYIREMO IYA RENDER YAWE NYAYO
-const API_URL = "https://imena-backend.onrender.com"; 
+// Import your existing components
+import Navbar from '../components/Navbar'; 
+import Footer from '../components/Footer';
+
+// Inzira nshya y'ububiko (Backend) kuri Render
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
+
 
 const MemberDashboard = () => {
-    const [stats, setStats] = useState({
-        totalMembers: 0,
-        totalCollaborators: 0,
-        presentToday: 0,
-        absentToday: 0,
-        lastUpdated: ''
-    });
-    const [announcements, setAnnouncements] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  const [stats, setStats] = useState({ 
+    totalMembers: 0, 
+    present: 0, 
+    absent: 0, 
+    totalCollabs: 0, 
+    announcements: [] 
+  });
+  const [currentTime, setCurrentTime] = useState(new Date());
 
-    const fetchDashboardData = async () => {
-        try {
-            // Niba ari ubwa mbere, loading iba true
-            const [statsRes, annRes] = await Promise.all([
-                axios.get(`${API_URL}/dashboard-stats`),
-                axios.get(`${API_URL}/announcements`)
-            ]);
-
-            setStats(statsRes.data);
-            setAnnouncements(annRes.data);
-            setError(null);
-        } catch (err) {
-            console.error("Error fetching dashboard data:", err);
-            setError("Ntabwo dushoboye gukura amakuru kuri server. Reba niba backend yaka.");
-        } finally {
-            setLoading(false);
-        }
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        // Twakuyeho localhost dushyiramo API_BASE nshya
+        const res = await axios.get(`${API_BASE}/stats/dashboard`);
+        setStats(res.data);
+      } catch (err) {
+        console.error("Error fetching stats from Render:", err);
+      }
     };
+    fetchStats();
+    const timer = setInterval(() => setCurrentTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
-    useEffect(() => {
-        fetchDashboardData();
-        
-        // Kwivugurura buri minota 2 (Optional)
-        const interval = setInterval(fetchDashboardData, 120000);
-        return () => clearInterval(interval);
-    }, []);
-
-    if (loading) {
-        return (
-            <div className="loading-container">
-                <Navbar />
-                <div className="loading-content">
-                    <div className="spinner"></div>
-                    <p>Turi gushaka amakuru mashya kuri Imena Moves...</p>
-                </div>
-                <Footer />
-            </div>
-        );
-    }
-
-    return (
-        <div className="member-dashboard-wrapper">
-            <Navbar />
-            
-            <div className="member-dashboard-layout"> 
-                <header className="dashboard-header">
-                    <h2><FaUsers /> Imena Moves Member Dashboard</h2>
-                    <p>Murakaza neza! Dore amakuru mashya agezweho muri club yacu.</p>
-                </header>
+  return (
+    <div className="member-dash-container">
+      <Navbar />
       
-                {error && <div className="error-alert">{error}</div>}
+      <main className="member-main">
+        <header className="dash-header">
+          <div className="header-info">
+            <h1>Dashboard Overview</h1>
+            <p className="welcome-msg">Muraho! Dore uko ibintu bihagaze uyu munsi.</p>
+          </div>
+          <div className="time-badge">
+             <span className="date">{currentTime.toLocaleDateString()}</span>
+             <span className="divider"> | </span>
+             <span className="time">{currentTime.toLocaleTimeString()}</span>
+          </div>
+        </header>
 
-                {/* Stats Cards */}
-                <div className="stats-grid">
-                    <div className="stat-card blue">
-                        <FaUsers className="icon" />
-                        <div className="stat-info">
-                            <h3>{stats.totalMembers}</h3>
-                            <p>Abanyamuryango</p>
-                        </div>
-                    </div>
-                    <div className="stat-card green">
-                        <FaHandshake className="icon" />
-                        <div className="stat-info">
-                            <h3>{stats.totalCollaborators}</h3>
-                            <p>Abafatanyabikorwa</p>
-                        </div>
-                    </div>
-                    <div className="stat-card present">
-                        <FaCheckCircle className="icon" />
-                        <div className="stat-info">
-                            <h3>{stats.presentToday}</h3>
-                            <p>Abari bahari (Uyu munsi)</p>
-                        </div>
-                    </div>
-                    <div className="stat-card absent">
-                        <FaTimesCircle className="icon" />
-                        <div className="stat-info">
-                            <h3>{stats.absentToday}</h3>
-                            <p>Abataraje (Uyu munsi)</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div className="last-update">
-                    <FaCalendarAlt /> <FaClock /> <span>Amakuru yaherutse kuvugururwa: {stats.lastUpdated || "Nta makuru"}</span>
-                </div>
-
-                {/* Announcements Section */}
-                <section className="announcements-section">
-                    <div className="section-title">
-                        <FaBullhorn /> <h3>Amatangazo Mashya</h3>
-                    </div>
-                    
-                    {announcements.length > 0 ? (
-                        <div className="announcements-container">
-                            {announcements.map((ann) => (
-                                <div key={ann._id} className="announcement-card">
-                                    <div className="card-header">
-                                        <h4>{ann.title}</h4>
-                                        <span className="announcement-date">
-                                            {new Date(ann.date).toLocaleDateString('rw-RW', {
-                                                day: 'numeric',
-                                                month: 'short',
-                                                year: 'numeric'
-                                            })}
-                                        </span>
-                                    </div>
-                                    <div className="card-body">
-                                        <p>{ann.content}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    ) : (
-                        <div className="empty-announcements">
-                            <p>Nta tangazo rishya rihari uyu munsi.</p>
-                        </div>
-                    )}
-                </section>
+        {/* STATS GRID */}
+        <section className="stats-grid">
+          <div className="stat-card blue">
+            <div className="stat-icon">👥</div>
+            <div className="stat-data">
+              <h3>Abamember</h3>
+              <p className="number">{stats.totalMembers}</p>
             </div>
+          </div>
+          
+          <div className="stat-card green">
+            <div className="stat-icon">✅</div>
+            <div className="stat-data">
+              <h3>Abitabiriye</h3>
+              <p className="number">{stats.present}</p>
+            </div>
+          </div>
 
-            <Footer />
-        </div>
-    );
+          <div className="stat-card red">
+            <div className="stat-icon">❌</div>
+            <div className="stat-data">
+              <h3>Abasibye</h3>
+              <p className="number">{stats.absent}</p>
+            </div>
+          </div>
+
+          <div className="stat-card purple">
+            <div className="stat-icon">🤝</div>
+            <div className="stat-data">
+              <h3>Collaborators</h3>
+              <p className="number">{stats.totalCollabs}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ANNOUNCEMENTS */}
+        <section className="ann-section">
+          <div className="section-title">
+            <span className="icon">📢</span>
+            <h3>Amatangazo y'Umunsi</h3>
+          </div>
+          
+          <div className="ann-grid">
+            {stats.announcements && stats.announcements.length > 0 ? (
+              stats.announcements.map(a => (
+                <div key={a._id} className="ann-card">
+                  <div className="ann-header">
+                    <h4>{a.title}</h4>
+                    <span className="ann-date">New</span>
+                  </div>
+                  <p>{a.content}</p>
+                </div>
+              ))
+            ) : (
+              <div className="ann-card">
+                <p className="no-data">Nta matangazo mashya ariho uyu munsi.</p>
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default MemberDashboard;

@@ -1,180 +1,172 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FaUserPlus, FaClipboardCheck, FaHandshake, FaBullhorn, FaTrash, FaPlusCircle } from 'react-icons/fa';
-import '../styles/AdminDashboard.css'; 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import '../styles/AdminDashboard.css';
 
-// HINDURA IYI LINK USHYIREMO IYA RENDER YAWE NYAYO
-const API_URL = "https://imena-backend.onrender.com"; 
+import Navbar from '../components/Navbar'; 
+import Footer from '../components/Footer';
+
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
+
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('members');
+  const [data, setData] = useState([]);
   const [members, setMembers] = useState([]);
-  const [announcements, setAnnouncements] = useState([]);
-  const [collaborators, setCollaborators] = useState([]);
-  
-  // Form States
-  const [newMember, setNewMember] = useState({ name: '', phone: '', role: '' });
-  const [newCollab, setNewCollab] = useState({ name: '', role: '', email: '' });
-  const [newAnnounce, setNewAnnounce] = useState({ title: '', content: '' });
+  const [attendanceRecords, setAttendanceRecords] = useState({});
+  const [loading, setLoading] = useState(false);
 
-  // 1. Gukura amakuru yose (Fetch Data)
+  const [formData, setFormData] = useState({ 
+    name: '', phone: '', age: '', parentName: '', role: '', title: '', content: '' 
+  });
+  const [editingId, setEditingId] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+    // Iyo uhinduye tab, siba ibyari muri form
+    setFormData({ name: '', phone: '', age: '', parentName: '', role: '', title: '', content: '' });
+    setEditingId(null);
+  }, [activeTab]);
+
   const fetchData = async () => {
+    setLoading(true);
     try {
-      const [resM, resA, resC] = await Promise.all([
-        axios.get(`${API_URL}/members`),
-        axios.get(`${API_URL}/announcements`),
-        axios.get(`${API_URL}/collaborators`)
-      ]);
-      setMembers(resM.data);
-      setAnnouncements(resA.data);
-      setCollaborators(resC.data);
-    } catch (err) {
-      console.error("Error fetching data:", err);
+      const endpoint = activeTab === 'attendance' ? 'members' : activeTab;
+      const res = await axios.get(`${API_BASE}/${endpoint}`);
+      setData(res.data);
+      if (activeTab === 'attendance' || activeTab === 'members') setMembers(res.data);
+    } catch (err) { 
+      console.error("Habaye ikosa mu gufata data:", err); 
     }
+    setLoading(false);
   };
 
-  useEffect(() => { fetchData(); }, []);
-
-  // --- CRUD FUNCTIONS ---
-
-  const handleAdd = async (e, endpoint, data, resetFn) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_URL}/${endpoint}`, data);
-      alert(`${endpoint} yongeweho neza!`);
-      resetFn();
+      if (editingId) {
+        // UPDATE: Menya neza ko endpoint yawe ku backend ari /api/announcements/:id
+        await axios.put(`${API_BASE}/${activeTab}/${editingId}`, formData);
+        alert("Byahinduwe neza!");
+      } else {
+        // CREATE
+        await axios.post(`${API_BASE}/${activeTab}`, formData);
+        alert("Byajyanyweyo neza!");
+      }
+      setFormData({ name: '', phone: '', age: '', parentName: '', role: '', title: '', content: '' });
+      setEditingId(null);
       fetchData();
-    } catch (err) { alert("Byanze! Reba niba backend yaka."); }
-  };
-
-  const handleDelete = async (endpoint, id) => {
-    if (window.confirm("Ese urashaka gusiba uyu mwirondoro?")) {
-      try {
-        await axios.delete(`${API_URL}/${endpoint}/${id}`);
-        fetchData();
-      } catch (err) { alert("Gusiba byanze!"); }
+    } catch (err) { 
+      console.error(err);
+      alert("Habaye ikosa mu kubika!"); 
     }
   };
 
-  // --- ATTENDANCE LOGIC ---
-  const [attendanceList, setAttendanceList] = useState({});
-
-  const submitAttendance = async () => {
-    const today = new Date().toISOString().split('T')[0];
-    const records = members.map(m => ({
-      memberId: m._id,
-      status: attendanceList[m._id] || 'Absent'
-    }));
-    try {
-      await axios.post(`${API_URL}/attendance`, { date: today, records });
-      alert("Attendance yabitswe neza!");
-    } catch (err) { alert("Attendance yanze!"); }
+  const handleDelete = async (id) => {
+    if (window.confirm("Urataka gusiba uyu murongo?")) {
+      try {
+        await axios.delete(`${API_BASE}/${activeTab}/${id}`);
+        fetchData();
+      } catch (err) {
+        alert("Gusiba byanze!");
+      }
+    }
   };
 
-  const renderContent = () => {
-    switch (activeTab) {
-      case 'members':
-        return (
-          <div className="admin-section">
-            <h3><FaUserPlus /> Member Management</h3>
-            <form className="admin-form" onSubmit={(e) => handleAdd(e, 'members', newMember, () => setNewMember({name:'', phone:'', role:''}))}>
-              <input type="text" placeholder="Full Name" value={newMember.name} onChange={e => setNewMember({...newMember, name: e.target.value})} required />
-              <input type="text" placeholder="Phone Number" value={newMember.phone} onChange={e => setNewMember({...newMember, phone: e.target.value})} required />
-              <input type="text" placeholder="Role (e.g. Dancer)" value={newMember.role} onChange={e => setNewMember({...newMember, role: e.target.value})} required />
-              <button type="submit" className="admin-btn-primary">Save Member</button>
-            </form>
-            <div className="data-table">
-              {members.map(m => (
-                <div key={m._id} className="data-row">
-                  <span>{m.name} - <b>{m.role}</b></span>
-                  <FaTrash className="delete-icon" onClick={() => handleDelete('members', m._id)} />
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      case 'attendance':
-        return (
-          <div className="admin-section">
-            <h3><FaClipboardCheck /> Daily Attendance</h3>
-            <p>Itariki: {new Date().toDateString()}</p>
-            <div className="attendance-list">
-              {members.map(m => (
-                <div key={m._id} className="attendance-row">
-                  <span>{m.name}</span>
-                  <select onChange={(e) => setAttendanceList({...attendanceList, [m._id]: e.target.value})}>
-                    <option value="Absent">Absent</option>
-                    <option value="Present">Present</option>
-                  </select>
-                </div>
-              ))}
-            </div>
-            <button onClick={submitAttendance} className="admin-btn-secondary">Submit Attendance</button>
-          </div>
-        );
-      case 'collaborators':
-        return (
-          <div className="admin-section">
-            <h3><FaHandshake /> Collaborators</h3>
-            <form className="admin-form" onSubmit={(e) => handleAdd(e, 'collaborators', newCollab, () => setNewCollab({name:'', role:'', email:''}))}>
-              <input type="text" placeholder="Company/Name" value={newCollab.name} onChange={e => setNewCollab({...newCollab, name: e.target.value})} required />
-              <input type="text" placeholder="Role" value={newCollab.role} onChange={e => setNewCollab({...newCollab, role: e.target.value})} required />
-              <button type="submit" className="admin-btn-primary">Save Collaborator</button>
-            </form>
-            <div className="data-table">
-              {collaborators.map(c => (
-                <div key={c._id} className="data-row">
-                  <span>{c.name} ({c.role})</span>
-                  <FaTrash className="delete-icon" onClick={() => handleDelete('collaborators', c._id)} />
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      case 'announcements':
-        return (
-          <div className="admin-section">
-            <h3><FaBullhorn /> Post Announcement</h3>
-            <form className="admin-form" onSubmit={(e) => handleAdd(e, 'announcements', newAnnounce, () => setNewAnnounce({title:'', content:''}))}>
-              <input type="text" placeholder="Title" value={newAnnounce.title} onChange={e => setNewAnnounce({...newAnnounce, title: e.target.value})} required />
-              <textarea placeholder="Message..." value={newAnnounce.content} onChange={e => setNewAnnounce({...newAnnounce, content: e.target.value})} required />
-              <button type="submit" className="admin-btn-primary">Post to Dashboard</button>
-            </form>
-            <div className="data-table">
-              {announcements.map(a => (
-                <div key={a._id} className="data-row">
-                  <span>{a.title}</span>
-                  <FaTrash className="delete-icon" onClick={() => handleDelete('announcements', a._id)} />
-                </div>
-              ))}
-            </div>
-          </div>
-        );
-      default: return null;
+  const handleAttendanceChange = (id, status) => {
+    setAttendanceRecords({ ...attendanceRecords, [id]: status });
+  };
+
+  const saveAttendance = async () => {
+    try {
+      const date = new Date().toISOString().split('T')[0];
+      const records = Object.keys(attendanceRecords).map(id => ({ memberId: id, status: attendanceRecords[id] }));
+      await axios.post(`${API_BASE}/attendance`, { date, records });
+      alert("Attendance yabitswe neza!");
+    } catch (err) {
+      alert("Attendance ntiyabitswe!");
     }
   };
 
   return (
-    <>
+    <div className="admin-container">
       <Navbar />
-      <div className="admin-dashboard-container">
-        <aside className="admin-sidebar">
-          <div className="sidebar-header">Admin Panel</div>
-          <nav className="admin-nav">
-            <button className={activeTab === 'members' ? 'active' : ''} onClick={() => setActiveTab('members')}><FaUserPlus /> Members</button>
-            <button className={activeTab === 'attendance' ? 'active' : ''} onClick={() => setActiveTab('attendance')}><FaClipboardCheck /> Attendance</button>
-            <button className={activeTab === 'collaborators' ? 'active' : ''} onClick={() => setActiveTab('collaborators')}><FaHandshake /> Collaborators</button>
-            <button className={activeTab === 'announcements' ? 'active' : ''} onClick={() => setActiveTab('announcements')}><FaBullhorn /> Announcements</button>
-          </nav>
+
+      <div className="admin-body">
+        <aside className="sidebar">
+          <button className={activeTab === 'members' ? 'active' : ''} onClick={() => setActiveTab('members')}>Members</button>
+          <button className={activeTab === 'attendance' ? 'active' : ''} onClick={() => setActiveTab('attendance')}>Attendance</button>
+          <button className={activeTab === 'collaborators' ? 'active' : ''} onClick={() => setActiveTab('collaborators')}>Collaborators</button>
+          <button className={activeTab === 'announcements' ? 'active' : ''} onClick={() => setActiveTab('announcements')}>Announcements</button>
         </aside>
-        <main className="admin-main-content">
-          {renderContent()}
+
+        <main className="main-content">
+          <div className="card shadow">
+            <h2>Gucunga {activeTab.toUpperCase()}</h2>
+            
+            {activeTab !== 'attendance' && (
+              <form onSubmit={handleSubmit} className="crud-form">
+                {activeTab === 'members' || activeTab === 'collaborators' ? (
+                  <>
+                    <input type="text" placeholder="Izina" value={formData.name || ''} onChange={e => setFormData({...formData, name: e.target.value})} required />
+                    <input type="text" placeholder="Telefone" value={formData.phone || ''} onChange={e => setFormData({...formData, phone: e.target.value})} required />
+                    {activeTab === 'collaborators' && <input type="text" placeholder="Role/Inshingano" value={formData.role || ''} onChange={e => setFormData({...formData, role: e.target.value})} />}
+                  </>
+                ) : (
+                  <>
+                    <input type="text" placeholder="Umutwe w'itangazo" value={formData.title || ''} onChange={e => setFormData({...formData, title: e.target.value})} required />
+                    <textarea placeholder="Ibirimo..." value={formData.content || ''} onChange={e => setFormData({...formData, content: e.target.value})} required />
+                  </>
+                )}
+                <button type="submit" className="btn-submit">{editingId ? 'Vugurura' : 'Ongeramo'}</button>
+                {editingId && <button type="button" onClick={() => {setEditingId(null); setFormData({name:'', phone:'', title:'', content:''})}} className="btn-cancel">Kurekera</button>}
+              </form>
+            )}
+
+            {loading ? <p>Tegereza gato...</p> : (
+              activeTab === 'attendance' ? (
+                <div className="attendance-box">
+                  <table className="custom-table">
+                    <thead>
+                      <tr><th>Izina</th><th>Present</th><th>Absent</th></tr>
+                    </thead>
+                    <tbody>
+                      {members.map(m => (
+                        <tr key={m._id}>
+                          <td>{m.name}</td>
+                          <td><input type="radio" name={m._id} onChange={() => handleAttendanceChange(m._id, 'present')} /></td>
+                          <td><input type="radio" name={m._id} onChange={() => handleAttendanceChange(m._id, 'absent')} /></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <button onClick={saveAttendance} className="btn-save-attendance">Bika Attendance y'Umunsi</button>
+                </div>
+              ) : (
+                <table className="custom-table">
+                  <thead>
+                    <tr><th>Izina / Umutwe</th><th>Ibindi</th><th>Actions</th></tr>
+                  </thead>
+                  <tbody>
+                    {data.map(item => (
+                      <tr key={item._id}>
+                        <td>{item.name || item.title}</td>
+                        <td>{item.phone || (item.content ? item.content.substring(0, 20) + "..." : "")}</td>
+                        <td>
+                          <button className="btn-edit" onClick={() => {setEditingId(item._id); setFormData(item);}}>Edit</button>
+                          <button className="btn-delete" onClick={() => handleDelete(item._id)}>Siba</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )
+            )}
+          </div>
         </main>
       </div>
+
       <Footer />
-    </>
+    </div>
   );
 };
 
