@@ -1,169 +1,137 @@
-
-/* Amabara y'Ibendera ry'u Rwanda */
 :root {
-  --rw-blue: #00a1de;
-  --rw-green: #006838;
-  --rw-yellow: #f9e300;
+  --primary-blue: #1e3a8a;
+  --accent-green: #10b981;
+  --bg-light: #f8fafc;
   --white: #ffffff;
-  --bg-light: #f4f4f4;
-  --text-color: #333;
+  --text-gray: #64748b;
+  --text-dark: #1e293b;
 }
 
-/* General Container and Resets */
+.page-wrapper {
+  background-color: var(--bg-light);
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-.about-us-container section {
+.section-padding {
   padding: 60px 0;
-  
 }
 
-.about-us-container h1, .about-us-container h2 {
-  color: var(--rw-green);
-  text-align: center;
-  
+.shadow {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Hero Section Styles --- */
+/* Hero Section */
 .about-hero {
-  background-color: var(--rw-blue);
-  color: var(--white);
-  padding: 100px 0;
-  width: 105.6%;
-  margin-left:-5%;
+  background: linear-gradient(135deg, var(--primary-blue), #2563eb);
+  color: white;
+  padding: 80px 0;
   text-align: center;
 }
 
-.about-hero-inner h1 {
-    color: var(--rw-yellow);
-    font-size: 3rem;
-}
+.about-hero h1 { font-size: 2.5rem; margin-bottom: 20px; }
+.about-hero p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6; opacity: 0.9; }
 
-.about-hero-inner p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-/* --- Mission, Vision, Values (MVV) Cards --- */
-.mvv-section {
-    background-color: var(--bg-light);
-}
-
-.card-grid {
+/* Mission Vision Grid */
+.mvv-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
 
 .mvv-card {
-  background: var(--white);
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
   text-align: center;
   transition: transform 0.3s ease;
 }
 
-.mvv-card:hover {
-    transform: translateY(-5px);
+.mvv-card:hover { transform: translateY(-10px); }
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border-radius: 15px;
 }
 
-.mvv-icon {
-  font-size: 3rem;
-  margin-bottom: 15px;
-}
+.icon-box.blue { background: #dbeafe; color: var(--primary-blue); }
+.icon-box.green { background: #d1fae5; color: var(--accent-green); }
+.icon-box.gold { background: #fef3c7; color: #d97706; }
 
-.blue-icon { color: var(--rw-blue); }
-.green-icon { color: var(--rw-green); }
-.yellow-icon { color: var(--rw-yellow); }
+/* Team Section */
+.team-bg { background: white; }
+.section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--text-dark); }
 
-/* --- Team Section --- */
-.team-grid {
+.team-grid {margin-top: -2%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
 }
 
 .team-card {
-  background: var(--white);
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  background: var(--bg-light);
+  padding: 30px;
+  border-radius: 20px;
   text-align: center;
 }
 
-.team-img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
+.member-avatar {
+  width: 100px;
+  height: 100px;
+  background: #e2e8f0;
+  color: var(--primary-blue);
+  font-size: 3rem;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
 
-.team-card h3 {
-  margin-top: 15px;
+.team-card h3 { color: var(--text-dark); margin-bottom: 5px; }
+.position { color: var(--accent-green); font-weight: bold; margin-bottom: 15px; }
+.bio { font-size: 0.95rem; color: var(--text-gray); line-height: 1.5; margin-bottom: 20px; }
+
+.member-contact a {
+  display: block;
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-size: 0.85rem;
   margin-bottom: 5px;
-  color: var(--text-color);
 }
 
-.team-role {
-  color: var(--rw-blue);
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 15px;
+/* Contact Card */
+.contact-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
 }
 
-.team-bio {
-    padding: 0 20px 15px 20px;
-    font-size: 0.9rem;
-    color: #666;
+.contact-flex {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 25px;
 }
 
-.team-contact {
-    background-color: var(--bg-light);
-    padding: 15px;
-    border-top: 1px solid #eee;
-}
-.team-contact p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-size: 0.9rem;
-    color: var(--text-color);
-}
+.c-item { display: flex; align-items: center; gap: 10px; color: var(--text-dark); font-weight: 500; }
+.c-item svg { color: var(--accent-green); font-size: 1.2rem; }
 
-
-/* --- Contact Section --- */
-.contact-section {
-    text-align: center;
-    background-color: var(--white);
-}
-
-.contact-details p {
-    font-size: 1.1rem;
-    margin: 10px 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 20px;
-}
-
-.contact-icon {
-    color: var(--rw-blue);
-}
-
-
-/* --- Responsive Styles --- */
+/* Responsive Queries */
 @media (max-width: 768px) {
-    .about-hero-inner h1 {
-        font-size: 2rem;
-    }
-    .contact-details p {
-        display: flex;
-        margin: 10px 0;
-    }
+  .about-hero h1 { font-size: 2rem; }
+  .section-padding { padding: 40px 0; }
+  .contact-flex { flex-direction: column; gap: 15px; align-items: flex-start; max-width: 300px; margin: 25px auto 0; }
 }
