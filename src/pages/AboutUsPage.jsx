@@ -14,7 +14,7 @@ const AboutUsPage = () => {
       bio: "Visionary leader committed to empowering youth through motion arts and cultural excellence."
     },
     {
-      name: "Pacifique NIYONDEORA",
+      name: "Pacifique NIYONDORA",
       position: "Director",
       email: "pacifiqueniyondora@gmail.com",
       tel: "+250 791 816 222",
@@ -109,3 +109,4 @@ const AboutUsPage = () => {
 };
 
 export default AboutUsPage;
+
