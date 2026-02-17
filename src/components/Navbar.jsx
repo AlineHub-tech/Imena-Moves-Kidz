@@ -4,7 +4,7 @@ import {
   FaBars, FaTimes, FaHome, FaInfoCircle, 
   FaTachometerAlt, FaSignInAlt, FaSearch 
 } from 'react-icons/fa';
-import '../styles/navbar.css'; 
+import '../styles/Navbar.css'; 
 import profile from '../assets/profile.jpg'; 
 
 const Navbar = () => {
@@ -62,3 +62,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
