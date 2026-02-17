@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-// Component igenzura ko umuntu afie uurengaz runaka
+// Component igenzura ko umuntu afite uburenganzira runaka
 const ProtectedRoute = ({ requiredRole }) => {
   const { userRole, isLoading } = useAuth();
 
@@ -20,8 +20,3 @@ const ProtectedRoute = ({ requiredRole }) => {
 };
 
 export default ProtectedRoute;
-
-
-
-
-

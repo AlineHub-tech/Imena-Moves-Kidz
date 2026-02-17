@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { FaFacebook, FaInstagram, FaYoutube, FaEnvelope, FaMapMarkerAlt, FaPhone,FaTiktok } from 'react-icons/fa';
-import '../styles/Footer.css'; // Importing specific CSS file
+import '../styles/Footer.css'; 
 
 const Footer = () => {
     return (
@@ -19,9 +19,9 @@ const Footer = () => {
 
                 <div className="footer-section">
                     <h3>Contact Us</h3>
-                    <p><FaMapMarkerAlt /> Kigali, Rwanda</p>
-                    <p><FaPhone /> +250 791 816 222</p>
-                    <p><FaEnvelope /> info@imenamoves.com</p>
+                    <p><FaMapMarkerAlt /> Kigali-kabuga</p>
+                    <p><FaPhone /> +250 734961956</p>
+                    <p><FaEnvelope /> Email:wejefu@gmail.com</p>
                     <div className="social-icons">
                         <a href="https://web.facebook.com/share/17N54HU5e1/"><FaFacebook /></a>
                         <a href="#"><FaInstagram /></a>
@@ -40,7 +40,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="bottom-bar">
-                <p>&copy; {new Date().getFullYear()} Imena Moves. All rights reserved.| Developed by <a href="https://aline-site-seven.vercel.app/"><span class="developer-name">Umugwaneza Aline</span></a></p>
+                <p>&copy; {new Date().getFullYear()} Imena Moves. All rights reserved.| Developed by <a href="https://aline-site-seven.vercel.app/"><span className="developer-name">Umugwaneza Aline</span></a></p>
             </div>
         </footer>
     );
