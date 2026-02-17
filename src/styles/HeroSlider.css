@@ -1,177 +1,160 @@
-
-
-/* Amabara y'Ibendera ry'u Rwanda */
 :root {
-  --rw-blue: #00a1de;
-  --rw-green: #006838;
-  --rw-yellow: #f9e300;
-  --white: #ffffff;
-  --text-color: #333;
+  --emerald: #03412c;
+  --royal-blue: #3b82f6;
+  --deep-purple: #8b5cf6;
+  --dark-void: #020617;
 }
 
-
-/* General Button Styles (ensure these are available globally or here) */
-.btn {
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-  display: inline-block;
-  border: none;
-  cursor: pointer;
-}
-.primary-btn { background-color: var(--rw-yellow); color: var(--text-color); font-weight: bold; }
-.primary-btn:hover { background-color: #ffda44; }
-
-
-/* Slider Container */
-.hero-slider-container {
+.modern-hero-section {
   position: relative;
-  width: 101.6%;
+  height: 90vh; /* Itwara hafi page yose */
+  display: flex;
+  width: 98.6%;
+  margin-top: -6%;
+  margin-left:-1%;
+  align-items: center;
+  background-color: var(--dark-void);
   overflow: hidden;
-  margin-left: -1%;
-  height: 85vh; /* Responsive height */
-  margin-top:-5.5%; /* Ibi byemeza ko itagoheka na fixed navbar (ifite 70px height) */
-}
-
-.slide-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-   background-size: cover;
-  background-position: center;
-  transition: background-image 0.5s ease-in-out; /* Smooth transition when image changes */
-}
-
-.slide-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Overlay y'amabara ya flag kugira ngo amagambo agaragare neza */
-    background-color: rgba(0, 0, 0, 0.678);
-}
-
-.slide-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
   padding: 0 20px;
-  height: 100%;
-  color: var(--white);
-  position: relative; /* Kuri z-index */
 }
 
-.hero-text-area {
-  flex: 1;
-  max-width: 600px;
+/* Mesh Gradient Spheres (Uruvange rw'amabara inyuma) */
+.gradient-sphere {
+  position: absolute;
+  filter: blur(100px);
+  border-radius: 50%;
+  z-index: 1;
+  opacity: 0.4;
 }
 
-.hero-text-area h1 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-bottom: 10px;
+.sphere-1 {
+  width: 500px; height: 500px;
+  background: var(--emerald);
+  top: -100px; right: -50px;
+  animation: float 15s infinite alternate;
 }
 
-.hero-text-area p {
-  font-size: 1.1rem;
+.sphere-2 {
+  width: 600px; height: 600px;
+  background: var(--royal-blue);
+  bottom: -150px; left: -100px;
+  animation: float 20s infinite alternate-reverse;
+}
+
+@keyframes float {
+  from { transform: translate(0, 0); }
+  to { transform: translate(50px, 100px); }
+}
+
+.hs-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.hs-content-box {
+  max-width: 1000px; /* Hagutse kugira ngo amagambo arambuke */
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hs-mini-badge {
+  color: var(--emerald);
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+  font-weight: 900;
+  border-left: 3px solid var(--emerald);
+  padding-left: 10px;
   margin-bottom: 20px;
+  display: block;
 }
 
-/* Slider Promo Area (Ku ruhande rw'iburyo) */
-.slider-promo-area {
-    flex: 0 0 350px; /* Width ihagaze */
-    background-color: rgba(255, 255, 255, 0.15);
-    padding: 25px;
-    border-radius: 8px;
-    backdrop-filter: blur(5px); /* Akanyenyeri keza */
-    border: 1px solid rgba(255, 255, 255, 0.3);
+.hs-main-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem); /* Ibihindagura bitewe na screen */
+  color: white;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 25px;
+  letter-spacing: -1px;
 }
 
-.slider-promo-area h2 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--rw-yellow);
+.gradient-text {
+  background: linear-gradient(to right, var(--emerald), var(--royal-blue), var(--deep-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.promo-icon {
-    font-size: 1.8rem;
+.hs-sub-text {
+  font-size: 1.3rem;
+  color: #94a3b8;
+  max-width: 700px;
+  margin-bottom: 40px;
+  line-height: 1.6;
 }
 
-/* Slider Controls (Utubuto n'utudomo) */
-.slider-controls {
+.hs-action-area {
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  gap: 10px;
+  gap: 40px;
 }
 
-.slider-controls button {
-  background: rgba(255, 255, 255, 0.2);
+.hs-cta-main {
+  background: white;
+  color: var(--dark-void);
+  padding: 18px 40px;
   border: none;
-  color: var(--white);
-  padding: 10px;
-  border-radius: 50%;
+  border-radius: 4px; /* Sharp professional edges */
+  font-weight: 800;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 15px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.3s ease;
 }
 
-.slider-controls button:hover {
-  background: rgba(255, 255, 255, 0.4);
+.hs-cta-main:hover {
+  background: var(--emerald);
+  color: white;
+  transform: scale(1.05);
 }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
+.hs-feature-icon {
+  font-size: 3rem;
+  color: rgb(255, 255, 255);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.1; }
+  50% { opacity: 0.3; }
+  100% { transform: scale(1.1); opacity: 0.1; }
+}
+
+.hs-pagination {
+  display: flex;
+  gap: 15px;
+  margin-top: 60px;
+}
+
+.hs-line-dot {
+  height: 4px;
+  width: 50px;
+  background: rgba(255, 255, 255, 0.1);
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.4s;
 }
 
-.dot.active {
-  background: var(--rw-yellow);
+.hs-line-dot.active {
+  background: var(--emerald);
+  width: 100px;
 }
 
+/* Transitions */
+.slide-in { opacity: 1; transform: translateX(0); }
+.slide-out { opacity: 0; transform: translateX(-30px); }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-  .slide-content {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-  }
-  .slider-promo-area {
-    margin-top: 20px;
-    flex: 0 0 auto;
-    width: 100%;
-    max-width: 400px;
-  }
-  .hero-slider-container {
-        height: 70vh;
-  margin-top:-21.5%;
-        width:103.6%;
-        margin-left: -2%;
-    }
+@media (max-width: 768px) {
+  .hs-main-title { font-size: 2.2rem; }
+  .hs-action-area { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .modern-hero-section { height: 80vh; }
 }
-
-@media (max-width: 576px) {
-    .hero-slider-container {
-        height: 70vh;
-        margin-top:-21.5%;
-        width:103.6%;
-        margin-left: -2%;
-    }
-    .hero-text-area h1 {
-        font-size: 2rem;
-    }
-}
-
