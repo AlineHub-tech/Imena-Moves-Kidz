@@ -158,11 +158,12 @@
 @media (max-width: 768px) {
   .dash-header {
     text-align: center;
-    margin-left:-7%
+    /* margin-left:-7% */
     justify-content: center;
   }
   .member-main{
    margin-top: 17%;
+  margin-left: -4%;
   }
   
   .stats-grid {
@@ -171,10 +172,11 @@
 
   .time-badge {
     width: 100%;
-     margin-left:-5%
+     /* margin-left:-5% */
     text-align: center;
   }
 }
+
 
 
 
