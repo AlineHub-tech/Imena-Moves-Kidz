@@ -163,7 +163,7 @@
   }
   .member-main{
    margin-top: 17%;
-  margin-left: -4%;
+   margin-left: -5%;
   }
   
   .stats-grid {
@@ -171,11 +171,12 @@
   }
 
   .time-badge {
-    width: 100%;
+    width: 95%;
      /* margin-left:-5% */
     text-align: center;
   }
 }
+
 
 
 
