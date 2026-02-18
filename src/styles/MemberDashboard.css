@@ -4,7 +4,7 @@
   --danger-red: #ef4444;
   --royal-purple: #7c3aed;
   --bg-soft: #f8fafc;
-  --white: #ffffff91;
+  --white: #ffffffa6;
   --text-dark: #0f172a;
 }
 
@@ -159,6 +159,9 @@
   .dash-header {
     text-align: center;
     justify-content: center;
+  }
+  .member-main{
+   margin-top: 17%;
   }
   
   .stats-grid {

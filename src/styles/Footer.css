@@ -85,9 +85,9 @@
         flex-direction: column;
     }
     .footer{
-  width: 103.6%;
+  width: 103.8%;
   margin-left:-2%;
-  margin-top:6%;
+  margin-bottom:-4%;
     }
 }
 .developer-name:hover {

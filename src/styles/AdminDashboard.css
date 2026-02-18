@@ -114,10 +114,12 @@
 @media (max-width: 1024px) {
   .admin-body {
     flex-direction: column; /* Sidebar ijya hejuru */
+    margin-top:17%;
   }
   .sidebar {
     width: 100%;
     flex-direction: row;
+    margin-left: -3%;
     overflow-x: auto;
   }
   .sidebar button {
