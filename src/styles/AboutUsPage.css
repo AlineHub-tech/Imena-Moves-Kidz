@@ -141,4 +141,8 @@
   .about-hero h1 { font-size: 2rem; }
   .section-padding { padding: 40px 0; }
   .contact-flex { flex-direction: column; gap: 15px; align-items: flex-start; max-width: 300px; margin: 25px auto 0; }
+  .about-hero{
+  width: 103.7%;
+  margin-left:-1.9%;
+  }
 }
