@@ -158,6 +158,7 @@
 @media (max-width: 768px) {
   .dash-header {
     text-align: center;
+    margin-left:-3%
     justify-content: center;
   }
   .member-main{
@@ -173,3 +174,4 @@
     text-align: center;
   }
 }
+
