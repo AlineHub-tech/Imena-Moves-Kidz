@@ -40,7 +40,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="bottom-bar">
-                <p>&copy; {new Date().getFullYear()} Imena Moves. All rights reserved.| Developed by <a href="https://aline-site-seven.vercel.app/"><span className="developer-name">Umugwaneza Aline</span></a></p>
+                <p>&copy; {new Date().getFullYear()} Imena Moves. All rights reserved.| Developed by <a href="https://byte-flow-ltd.vercel.app/"><span className="developer-name">ByteFlow Ltd</span></a></p>
             </div>
         </footer>
     );
