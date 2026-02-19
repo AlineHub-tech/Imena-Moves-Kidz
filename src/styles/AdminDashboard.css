@@ -2,6 +2,7 @@
 
 
 
+
 :root {
   --primary-blue: #2563eb;
   --secondary-green: #10b981;
@@ -241,6 +242,7 @@
     color: var(--primary-blue);
   }
 }
+
 
 
 
