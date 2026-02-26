@@ -83,20 +83,17 @@ Create a .env file in the root of the backend folder:
 env
 PORT=5000
 MONGO_URI=your_mongodb_atlas_connection_string
-Use code with caution.
 
 Install & Run Backend:
 bash
 npm install
 npm run dev
-Use code with caution.
 
 Install & Run Frontend:
 bash
 cd client
 npm install
 npm run dev
-Use code with caution.
 
 🤝 Contribution & License
 Contributions are welcome! Please open an issue or submit a pull request.
