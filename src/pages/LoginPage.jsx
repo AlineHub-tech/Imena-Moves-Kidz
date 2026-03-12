@@ -17,10 +17,10 @@ const LoginPage = () => {
     setError('');
 
     // Simulation (Iyi logic ihura na backend yawe)
-    if (username === 'admin' && password === 'password') {
+    if (username === 'admin' && password === '1234') {
       login('admin'); // Bwira Context ko 'admin' yinjiye
       navigate('/admin'); // Jyanwa kuri Admin Dashboard
-    } else if (username === 'member' && password === 'password') {
+    } else if (username === 'member' && password === '12345') {
       login('member'); // Bwira Context ko 'member' yinjiye
       navigate('/memberdashboard'); // Jyanwa kuri Member Dashboard
     } else {
@@ -55,3 +55,4 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
