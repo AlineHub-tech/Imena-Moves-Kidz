@@ -8,7 +8,9 @@ import LandingPage from './pages/LandingPage';
 import AdminDashboard from './pages/AdminDashboard';
 import MemberDashboard from './pages/MemberDashboard';
 import LoginPage from './pages/LoginPage';
+import ContactPage from './pages/ContactPage';
 import AboutUsPage from './pages/AboutUsPage';
+import ApplyPage from './pages/ApplyPage';
 // ... import other pages ...
 
 function App() {
@@ -20,8 +22,9 @@ function App() {
             <Routes>
               {/* Public Routes - Burikose ashobora kuzireba */}
               <Route path="/" element={<LandingPage />} />
+              <Route path="/apply" element={<ApplyPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/about" element={<AboutUsPage />} />
-              <Route path="/services" element={<div style={{ paddingTop: '70px' }}><p>Serivisi zose dutanga.</p></div>} />
               <Route path="/login" element={<LoginPage />} />
 
               {/* Protected Route for Members */}
