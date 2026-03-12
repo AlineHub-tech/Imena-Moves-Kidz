@@ -1,65 +1,64 @@
-import React, { useState } from 'react'; 
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { 
-  FaBars, FaTimes, FaHome, FaInfoCircle, 
-  FaTachometerAlt, FaSignInAlt, FaSearch 
-} from 'react-icons/fa';
-import '../styles/Navbar.css'; 
-import profile from '../assets/profile.jpg'; 
+  FaHome, FaInfoCircle, FaEnvelope, FaUserShield, 
+  FaUserEdit, FaBars, FaTimes, FaRocket 
+} from "react-icons/fa";
 
-const Navbar = () => {
+// Import your profile image
+import profileImg from "../assets/profile.jpg"; 
+import "../styles/Navbar.css";
+
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <nav className="navbar">
-      <div className="nav-container">
-        {/* LOGO */}
-        <Link to="/" className="nav-logo" onClick={closeMenu}>
-          <img src={profile} alt="Logo" />
-          <span>Imena Moves</span>
+    <nav className="main-nav">
+      <div className="nav-container container-h">
+        {/* LOGO AREA */}
+        <Link to="/" className="nav-logo">
+          IMENA<span>MOVES</span>
         </Link>
 
-        {/* SEARCH (Desktop Only) */}
-        <div className="nav-search-desktop">
-          <input type="text" placeholder="Search..." />
-          <FaSearch />
-        </div>
-
-        {/* MOBILE TOGGLE BUTTON */}
-        <div className="nav-toggle" onClick={toggleMenu}>
+        {/* MOBILE MENU TOGGLE */}
+        <div className="mobile-toggle" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes /> : <FaBars />}
         </div>
 
-        {/* NAV MENU */}
-        <ul className={isMenuOpen ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <NavLink to="/" className="nav-links" onClick={closeMenu}>
-              <FaHome className="nav-icon" /> Home
-            </NavLink>
+        {/* NAVIGATION LINKS */}
+        <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
+          <li>
+            <Link onClick={toggleMenu} to="/"><FaHome className="nav-icon" /> Home</Link>
           </li>
-          <li className="nav-item">
-            <NavLink to="/about" className="nav-links" onClick={closeMenu}>
-              <FaInfoCircle className="nav-icon" /> About Us
-            </NavLink>
+          <li>
+            <Link onClick={toggleMenu} to="/about"><FaInfoCircle className="nav-icon" /> About Us</Link>
           </li>
-          <li className="nav-item">
-            <NavLink to="/memberdashboard" className="nav-links" onClick={closeMenu}>
-              <FaTachometerAlt className="nav-icon" /> Dashboard
-            </NavLink>
+          <li>
+            <Link onClick={toggleMenu} to="/contact"><FaEnvelope className="nav-icon" /> Contact Us</Link>
           </li>
-          <li className="nav-item nav-btn-item">
-            <Link to="/login" className="nav-login-btn" onClick={closeMenu}>
-              <FaSignInAlt /> Login
+          {/* APPLY LINK NSHYA */}
+          <li>
+            <Link onClick={toggleMenu} to="/apply" className="apply-nav-link">
+              <FaRocket className="nav-icon" /> Apply Now
             </Link>
+          </li>
+          <li>
+            <Link onClick={toggleMenu} to="/login"><FaUserEdit className="nav-icon" /> Member</Link>
+          </li>
+          <li>
+            <Link onClick={toggleMenu} to="/login" className="admin-link">
+              <FaUserShield className="nav-icon" /> Admin
+            </Link>
+          </li>
+          
+          {/* PROFILE IMAGE */}
+          <li className="nav-profile">
+            <img src={profileImg} alt="User Profile" className="profile-thumb" />
           </li>
         </ul>
       </div>
     </nav>
   );
-};
-
-export default Navbar;
-
+}
