@@ -12,8 +12,8 @@ A robust Full-Stack Management Solution designed for **Imena Moves Kidz** to str
 
 ## 📸 ScreenShoot
 <img width="1348" height="630" alt="imena" src="https://github.com/user-attachments/assets/b7e773eb-9adf-40ee-89b5-515a9c8eb728" />
-<img width="1350" height="635" alt="ime3" src="https://github.com/user-attachments/assets/9a0c4999-f181-4419-a13a-508f29de22fe" />
 <img width="1351" height="632" alt="imen1" src="https://github.com/user-attachments/assets/71679843-c010-46ac-88a1-b2a2ad7e9f69" />
+<img width="1350" height="635" alt="ime3" src="https://github.com/user-attachments/assets/9a0c4999-f181-4419-a13a-508f29de22fe" />
 
 ---
 ## 🛠️ Technology Architecture
