@@ -1,252 +1,207 @@
+@import url('https://googleapis.com');
+
 :root {
-  --primary-blue: #2563eb;
-  --secondary-green: #10b981;
-  --dark-blue: #1e3a8a;
-  --bg-gray: #f1f5f9;
+  --admin-primary: #ff4d05;
+  --admin-dark: #0f172a;
+  --admin-bg: #f1f5f9;
   --white: #ffffff;
+  --border: #e2e8f0;
   --text-main: #334155;
+  --success: #22c55e;
+  --danger: #ef4444;
 }
 
 .admin-container {
-  display: flex;
-  flex-direction: column;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--admin-bg);
   min-height: 100vh;
-  background-color: var(--bg-gray);
+  padding-top: 80px; /* Space for fixed Navbar */
 }
 
 .admin-body {
   display: flex;
-  padding: 20px;
-  margin-top:5%;
-  gap: 20px;
-  flex: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 80px);
 }
 
-/* --- SIDEBAR (Desktop) --- */
+/* --- SIDEBAR NAVIGATION --- */
 .sidebar {
-  width: 250px;
-  background: var(--white);
-  padding: 15px;
-   border: 1px solid rgba(0, 0, 0, 0.753);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.322);
+  width: 260px;
+  background: var(--admin-dark);
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
 .sidebar button {
-  padding: 12px 15px;
+  background: transparent;
   border: none;
-  background: none;
+  color: #94a3b8;
+  padding: 14px 20px;
   text-align: left;
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--text-main);
+  border-radius: 12px;
   cursor: pointer;
-  border-radius: 8px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+}
+
+.sidebar button:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .sidebar button.active {
-  background: var(--primary-blue);
-  color: white;
+  background: var(--admin-primary);
+  color: var(--white);
+  box-shadow: 0 10px 15px -3px rgba(255, 77, 5, 0.3);
 }
 
+/* --- MAIN CONTENT AREA --- */
 .main-content {
   flex: 1;
+  padding: 40px;
 }
 
-.card {
+.card.shadow {
   background: var(--white);
-  padding: 25px;
-  border-radius: 15px;
-  border: 1px solid rgba(0, 0, 0, 0.753);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.274);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border: 1px solid var(--border);
 }
 
+.main-content h2 {
+  font-size: 1.5rem;
+  color: var(--admin-dark);
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--admin-bg);
+  padding-bottom: 15px;
+}
+
+/* --- CRUD FORM STYLES --- */
 .crud-form {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  background: var(--admin-bg);
+  padding: 25px;
+  border-radius: 15px;
 }
 
-.crud-form input, .crud-form textarea {
-  padding: 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
+.crud-form input, 
 .crud-form textarea {
-  grid-column: span 2; /* Itwara inkingi zose */
-  min-height: 100px;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-family: inherit;
+  font-size: 0.95rem;
 }
+
+.crud-form textarea { grid-column: 1 / -1; min-height: 100px; }
 
 .btn-submit {
-  background: var(--secondary-green);
-  color: rgb(4, 83, 30);
-  padding: 12px;
+  background: var(--admin-primary);
+  color: white;
   border: none;
-  border-radius: 8px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-cancel {
+  background: #cbd5e1;
+  color: var(--admin-dark);
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 /* --- TABLE STYLES --- */
 .custom-table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 20px;
 }
 
 .custom-table th {
-  background: #f8fafc;
-  padding: 12px;
   text-align: left;
-  color: var(--dark-blue);
+  padding: 15px;
+  background: var(--admin-bg);
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
 }
 
 .custom-table td {
-  padding: 12px;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 15px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-main);
+  font-size: 0.95rem;
 }
 
-@media (max-width: 1024px) {
-  .admin-body {
-    flex-direction: column; /* Sidebar ijya hejuru */
-    margin-top:17%;
-  }
-  .sidebar {
+/* --- ACTION BUTTONS --- */
+.btn-edit {
+  background: #f1f5f9;
+  color: #3b82f6;
+  border: 1px solid #dbeafe;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-right: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-delete {
+  background: #fef2f2;
+  color: var(--danger);
+  border: 1px solid #fee2e2;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* --- ATTENDANCE SPECIFIC --- */
+.btn-save-attendance {
+  margin-top: 30px;
+  width: 100%;
+  background: var(--success);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  /* Tables ziba nini cyane, zigomba kuba scrollable */
+  .attendance-box, .custom-table {
+    display: block;
     width: 100%;
-    flex-direction: row;
-    margin-left: -3%;
-    overflow-x: auto;
-  }
-  .sidebar button {
+    overflow-x: auto; /* Bituma utaba tableubwayo utarinze kurengera page */
     white-space: nowrap;
   }
-}
 
-/* MOBILE VIEW (max-width: 768px) */
-@media (max-width: 768px) {
-  .crud-form {
-    grid-template-columns: 1fr; /* Inkingi 1 kuri Mobile */
-  }
-  .crud-form textarea {
-    grid-column: span 1;
+  .admin-body {
+    flex-direction: column !important;
   }
 
-  /* Guhindura Table ikaba Cards kuri Mobile */
-  .custom-table thead {
-    display: none; /* Tegeka imitwe ya table kwihisha */
-  }
-/* 1. Ongeramo / Vugurura Button (Green) */
-.btn-submit {
-  background-color: #10b981 !important; /* Emerald Green */
-  color: white !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  border-radius: 6px !important;
-  font-weight: bold !important;
-  cursor: pointer !important;
-  transition: opacity 0.3s ease !important;
-}
-
-.btn-submit:hover {
-  opacity: 0.8 !important;
-}
-
-/* 2. Edit Button (Blue) */
-.btn-edit {
-  background-color: #2563eb !important; /* Royal Blue */
-  color: white !important;
-  border: none !important;
-  padding: 6px 14px !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  margin-right: 8px !important;
-  font-weight: 500 !important;
-}
-
-.btn-edit:hover {
-  background-color: #1d4ed8 !important;
-}
-
-/* 3. Siba / Delete Button (Red) */
-.btn-delete {
-  background-color: #ef4444 !important; /* Red */
-  color: white !important;
-  border: none !important;
-  padding: 6px 14px !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  font-weight: 500 !important;
-}
-
-.btn-delete:hover {
-  background-color: #dc2626 !important;
-}
-
-/* 4. Kurekera / Cancel Button (Gray) */
-.btn-cancel {
-  background-color: #64748b !important;
-  color: white !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  border-radius: 6px !important;
-  margin-left: 10px !important;
-  cursor: pointer !important;
-}
-
-/* 5. Attendance Save Button (Dark Blue) */
-.btn-save-attendance {
-  background-color: #1e3a8a !important;
-  color: white !important;
-  border: none !important;
-  padding: 12px 0 !important;
-  width: 100% !important;
-  margin-top: 15px !important;
-  border-radius: 8px !important;
-  font-weight: bold !important;
-  cursor: pointer !important;
-}
-
-.btn-save-attendance:hover {
-  background-color: #172554 !important;
-}
-
-  .custom-table tr {
-    display: block;
-    background: #f8fafc;
-    margin-bottom: 10px;
-    border-radius: 10px;
+  .sidebar {
+    width: 100% !important;
+    flex-direction: row !important;
+    overflow-x: auto;
     padding: 10px;
-  }
-  .custom-table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: none;
-    text-align: right;
-    padding: 8px 5px;
-  }
-  .custom-table td::before {
-    content: attr(data-label); /* Ibi nibyo bizana amazina nka 'Izina:' */
-    font-weight: bold;
-    float: left;
-    color: var(--primary-blue);
+    position: sticky;
+    top: 80px;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

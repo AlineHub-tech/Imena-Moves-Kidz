@@ -1,106 +1,89 @@
-
-/* Amabara y'Ibendera ry'u Rwanda */
-:root {
-    --rw-blue: #00a1de;
-    --rw-green: #03412c;
-    --rw-yellow: #f9e300;
-    --white: #ffffff;
+.main-footer {
+    background: #0f172a; /* Deep Navy Dark */
+    color: #cbd5e1;
+    padding: 80px 0 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
-/* General reset for Footer context */
-.footer a { color: var(--white); }
-
-.footer {
-    background-color: var(--rw-green);
-    color: white;
-  width: 102.6%;
-  margin-left:-2%;
-  margin-top:6%;
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr;
+    gap: 40px;
+    padding-bottom: 60px;
 }
 
-.footer-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-left: 2%;
-    padding-bottom: 20px;
-    
+/* BRAND STYLES */
+.footer-logo {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+.footer-logo span { color: #ff4d05; }
+.brand-desc { line-height: 1.6; margin-bottom: 25px; font-size: 0.95rem; }
+
+.social-pills { display: flex; gap: 12px; }
+.social-pills a {
+    width: 40px; height: 40px; background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 10px; color: #fff; transition: 0.3s;
+    text-decoration: none;
+}
+.social-pills a:hover { background: #ff4d05; transform: translateY(-3px); }
+
+/* LINK STYLES */
+.main-footer h3 {
+    color: #fff; font-size: 1.1rem; font-weight: 700;
+    margin-bottom: 25px; position: relative;
+}
+.main-footer h3::after {
+    content: ''; position: absolute; left: 0; bottom: -8px;
+    width: 30px; height: 2px; background: #ff4d05;
 }
 
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-    margin: 15px 0;
+.footer-links ul { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a {
+    color: #94a3b8; text-decoration: none; transition: 0.3s;
+    display: flex; align-items: center; gap: 8px; font-size: 0.95rem;
+}
+.footer-links a:hover { color: #ff4d05; padding-left: 5px; }
+.li-icon { font-size: 0.7rem; color: #ff4d05; }
+
+/* CONTACT STYLES */
+.contact-row { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
+.c-icon { color: #ff4d05; font-size: 1.1rem; }
+
+/* NEWSLETTER STYLES */
+.footer-sub-form {
+    display: flex; margin-top: 20px; background: rgba(255,255,255,0.05);
+    padding: 5px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+}
+.footer-sub-form input {
+    background: transparent; border: none; padding: 10px 15px;
+    color: #fff; flex: 1; outline: none; width: 100%;
+}
+.footer-sub-form button {
+    background: #ff4d05; color: #fff; border: none;
+    padding: 10px 20px; border-radius: 8px; font-weight: 700; cursor: pointer;
 }
 
-.footer-section h3 {
-    color: var(--rw-yellow);
-    margin-bottom: 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 5px;
+/* BOTTOM BAR */
+.footer-bottom {
+    background: #020617;
+    padding: 25px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.85rem;
 }
+.bottom-flex { display: flex; justify-content: space-between; align-items: center; }
+.dev-link { color: #ff4d05; text-decoration: none; font-weight: 700; margin-left: 5px; }
 
-.footer-section p {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
 }
-
-.footer-section svg {
-    margin-right: 10px;
-    color: var(--rw-blue);
-}
-
-.footer-section ul li a:hover {
-    color: var(--rw-yellow);
-}
-
-.social-icons a {
-    color: white;
-    font-size: 1.5rem;
-    margin-right: 15px;
-    transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-    color: var(--rw-yellow);
-}
-
-.bottom-bar {
-    background-color: rgba(0, 0, 0, 0.2);
-    text-align: center;
-    padding: 15px 20px;
-    font-size: 0.9rem;
-}
-
-.subscribe-form { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
-.subscribe-form input { padding: 10px; border-radius: 5px; border: none; }
-.subscribe-form button { padding: 10px; background-color: var(--rw-blue); color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
-.subscribe-form button:hover { background-color: #00a1dee6; }
-
-/* Responsive for Footer */
-@media screen and (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-    }
-    .footer{
-  width: 103.8%;
-  margin-left:-2%;
-  margin-bottom:-4%;
-    }
-}
-.developer-name:hover {
-    color: #ffffff; 
-    text-decoration:none;
-}
- a{
-text-decoration:none;
-color: #ff380b; 
-font-weight:bolder;
-}
-.developer-name {
-    color: #ff380b; 
-    font-weight:bolder;
-
+@media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .bottom-flex { flex-direction: column; gap: 10px; text-align: center; }
 }

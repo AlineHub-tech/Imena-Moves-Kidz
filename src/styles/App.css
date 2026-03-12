@@ -1,17 +1,37 @@
-
-/* ... (Maintain all existing CSS code from previous response) ... */
-
-/* New styles for pages and router links */
-.page-content {
-  padding: 80px 20px 40px 20px; /* Ensures content is below the fixed navbar */
-  min-height: 60vh; /* Kureshya page hagati ya navbar na footer */
-  text-align: center;
+/* Kora ibi kuri buri element yose muri App */
+* {
+  box-sizing: border-box; /* Birinda ko padding yagura element ikarenga screen */
+  margin: 0;
+  padding: 0;
 }
 
-/* Style for the active link in the navbar (e.g., when on the Dashboard page) */
-/* Note: Depending on React Router version, 'active' class is automatic for NavLink */
-.nav ul li .active-link {
-    color: var(--rw-yellow) !important; 
-    border-bottom: 2px solid var(--rw-yellow);
-    padding-bottom: 8px; /* Adjustment for bottom border style */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Birinda ko pageinyerera iburyo */
+  position: relative;
+}
+
+.App {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Kuringaniza container zose kuri mobile */
+.container-h {
+  width: 100% !important;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px !important; /* Bituma amagambo adakora ku nkingi za fone */
+}
+
+/* Kuringaniza amakarita yose n'ama-grids */
+.features-grid, .detailed-grid, .services-bento, .stats-grid, .leadership-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  width: 100% !important;
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 2.2rem !important; }
+  h2 { font-size: 1.8rem !important; }
+  section { padding: 40px 0 !important; } /* Bigabanya umwanya munini (padding) kuri fone */
 }

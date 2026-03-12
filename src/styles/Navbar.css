@@ -1,21 +1,14 @@
-:root {
-  --emerald: #03412c;
-  --dark-emerald: #004932;
-  --white: #ffffff;
-  --glass: rgba(255, 255, 255, 0.1);
-}
-
-.navbar {
-  background: var(--emerald);
+.main-nav {
   height: 80px;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
   display: flex;
   align-items: center;
   position: fixed;
   top: 0;
-  margin-left: -2%;
-  width: 101%;
-  z-index: 9999;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 .nav-container {
@@ -23,138 +16,100 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  padding: 0 24px;
 }
 
 .nav-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  gap: 12px;
-  color: white;
+  font-size: 1.5rem;
   font-weight: 800;
-  font-size: 1.4rem;
+  text-decoration: none;
+  color: #111827;
+  letter-spacing: -1px;
 }
 
-.nav-logo img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 2px solid white;
-}
+.nav-logo span { color: #ff4d05; }
 
-/* Desktop Search */
-.nav-search-desktop {
-  background: rgba(255, 255, 255, 0.15);
-  padding: 8px 15px;
-  border-radius: 50px;
+.nav-links {
   display: flex;
   align-items: center;
-  gap: 10px;
-  width: 300px;
-  color: white;
-}
-
-.nav-search-desktop input {
-  background: none;
-  border: none;
-  color: white;
-  width: 100%;
-  outline: none;
-}
-
-.nav-search-desktop input::placeholder { color: #d1fae5; }
-
-/* Nav Menu Desktop */
-.nav-menu {
-  display: flex;
   list-style: none;
-  align-items: center;
   gap: 30px;
 }
 
-.nav-links {
-  color: white;
+.nav-links li a {
   text-decoration: none;
+  color: #4b5563;
   font-weight: 600;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: var(--transition);
-  padding: 8px 0;
+  transition: 0.3s;
 }
 
-.nav-links:hover, .nav-links.active {
-  color: #d1fae5;
-  border-bottom: 2px solid white;
+.nav-links li a:hover { color: #ff4d05; }
+
+.nav-icon { font-size: 1.1rem; color: #9ca3af; }
+
+.admin-link {
+  background: #fff0eb;
+  padding: 8px 15px;
+  border-radius: 8px;
+  color: #ff4d05 !important;
 }
 
-.nav-login-btn {
-  background: white;
-  color: var(--emerald);
-  padding: 10px 24px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: var(--transition);
-}
-
-.nav-login-btn:hover {
-  background: #f1f5f9;
-  transform: scale(1.05);
-}
-
-.nav-toggle {
-  display: none;
-  color: white;
-  font-size: 1.8rem;
+.profile-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff4d05;
   cursor: pointer;
 }
 
-/* --- MOBILE & TABLET DESIGN --- */
-@media screen and (max-width: 1024px) {
-  .nav-search-desktop { display: none; }
-  
-  .nav-toggle { display: block; z-index: 10001; }
+/* MOBILE STYLES */
+.mobile-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #111827;
+}
 
-  .nav-menu {
-    position: fixed;
-    top: -100vh; /* Start off-screen */
-    left: 0;
-     width: 100%;
-    height: 100vh;
-    background: var(--emerald);
-    flex-direction: column;
-    justify-content: center;
-    transition: var(--transition);
-    padding: 0;
-    z-index: 10000;
-  }
-
-  .nav-menu.active {
-    top: 0; /* Slide down into view */
-  }
-
-  .nav-item {
-    width: 100%;
-    text-align: center;
-    margin: 15px 0;
-  }
+@media (max-width: 1024px) {
+  .mobile-toggle { display: block; }
 
   .nav-links {
-    justify-content: center;
-    font-size: 1.1rem; /* Large accessible font for mobile */
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    flex-direction: column;
+    background: #fff;
+    width: 100%;
+    height: calc(100vh - 80px);
+    padding: 40px 0;
+    transition: 0.4s;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05);
   }
 
-  .nav-login-btn {
-    width: 80%;
-    margin: 20px auto;
-    justify-content: center;
-    font-size: 1.1rem;
+  .nav-links.active { left: 0; }
+
+  .nav-links li a { font-size: 1.2rem; padding: 15px 0; }
+  
+  .profile-thumb { width: 60px; height: 60px; margin-top: 20px; }
+}
+.apply-nav-link {
+  color: #ff4d05 !important; /* Ibara rya Imena Moves */
+  font-weight: 700 !important;
+}
+
+.apply-nav-link:hover {
+  opacity: 0.8;
+}
+
+/* Kuri mobile, menya ko icons zose ziringaniye */
+@media (max-width: 1024px) {
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid #f1f5f9;
+    padding: 10px 0;
   }
 }

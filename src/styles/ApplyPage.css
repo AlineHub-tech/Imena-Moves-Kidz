@@ -1,0 +1,69 @@
+.apply-page-root { 
+  background: #f8fafc; 
+  padding-top: 80px; 
+  min-height: 100vh;
+}
+
+.apply-hero { 
+  text-align: center; 
+  padding: 80px 20px; 
+  background: linear-gradient(135deg, #fff 0%, #fff7f2 100%);
+}
+
+.apply-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; color: #111827; }
+
+.form-wrapper { 
+  display: flex; 
+  justify-content: center; 
+  padding: 40px 20px 100px;
+}
+
+.modern-apply-form {
+  background: #fff;
+  padding: 40px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid #eee;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Auto-responsive grid */
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.input-group label { display: block; font-weight: 700; margin-bottom: 8px; color: #374151; font-size: 0.9rem; }
+.input-group input, .input-group textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fdfdfd;
+}
+
+.btn-send-wa {
+  width: 100%;
+  background: #25d366; /* WhatsApp Green */
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+}
+
+.btn-send-wa:hover { background: #1ebe57; transform: translateY(-3px); }
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width: 768px) {
+  .apply-hero { padding: 60px 20px; }
+  .modern-apply-form { padding: 25px; border-radius: 20px; }
+}

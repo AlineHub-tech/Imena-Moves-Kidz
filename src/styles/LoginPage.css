@@ -1,85 +1,149 @@
+@import url('https://googleapis.com');
 
-/* Amabara y'Ibendera ry'u Rwanda */
 :root {
-  --rw-blue: #00a1de;
-  --rw-green: #006838;
-  --rw-yellow: #f9e300;
-  --white: #ffffff;
-  --bg-light: #f4f4f4;
-  --text-color: #333;
+  --primary: #ff4d05;
+  --dark-bg: #0f172a;
+  --text-main: #1e293b;
+  --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 .login-container-wrapper {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: 80vh; /* Ituma ikard ishushanya hagati */
-  background-color: var(--bg-light);
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #fff7f2 100%);
   padding: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .login-card {
-  background-color: var(--white);
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
+  padding: 50px;
+  border-radius: 30px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
   text-align: center;
+  animation: fadeIn 0.6s ease-out;
 }
 
 .login-card h2 {
-  color: var(--rw-green);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark-bg);
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.login-card::before {
+  content: "IMENA MOVES";
+  display: block;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 3px;
   margin-bottom: 10px;
 }
 
-.login-card p {
-  color: #666;
+/* --- ERROR MESSAGE --- */
+.error-message {
+  background: #fef2f2;
+  color: #ef4444;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
   margin-bottom: 20px;
+  border: 1px solid #fee2e2;
 }
 
+/* --- FORM STYLES --- */
 .form-group {
-  margin-bottom: 15px;
   text-align: left;
+  margin-bottom: 20px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  color: var(--text-color);
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
 }
 
 .form-group input {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box; /* Ensures padding doesn't increase width */
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 2px solid #f1f5f9;
+  background: #f8fafc;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 77, 5, 0.1);
+}
+
+/* --- LOGIN BUTTON --- */
 .login-btn {
   width: 100%;
-  padding: 12px;
-  background-color: var(--rw-blue);
-  color: var(--white);
+  background: var(--primary);
+  color: white;
+  padding: 16px;
+  border-radius: 12px;
   border: none;
-  border-radius: 5px;
   font-size: 1.1rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 10px 20px rgba(255, 77, 5, 0.2);
 }
 
 .login-btn:hover {
-  background-color: #007bff;
+  transform: translateY(-2px);
+  background: #e04404;
+  box-shadow: 0 15px 30px rgba(255, 77, 5, 0.3);
 }
 
-.error-message {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #f5c6cb;
+.login-btn:active {
+  transform: translateY(0);
 }
 
+/* --- FOOTER IN LOGIN --- */
+.login-footer-text {
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.login-footer-text a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* --- ANIMATION --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  
+  .login-card h2 {
+    font-size: 1.5rem;
+  }
+}
