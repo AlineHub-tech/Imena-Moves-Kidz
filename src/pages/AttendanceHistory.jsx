@@ -87,7 +87,7 @@ const AttendanceHistory = () => {
                           {item.presentList?.map((name, i) => (
                             <tr key={`p-${i}`} className="row-present">
                               <td>{name}</td>
-                              <td><span className="badge badge-p">Yariyo</span></td>
+                              <td><span className="badge badge-p">Yitabiriye</span></td>
                             </tr>
                           ))}
                           {/* Kwerekana abasibye */}
