@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext'; // Import useAuth hook
+import { useAuth } from '../context/AuthContext';
+import { FaUser, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa'; // Icons nshya
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/LoginPage.css'; 
@@ -8,49 +9,89 @@ import '../styles/LoginPage.css';
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuth(); // Hamagara login function
+  const { login } = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();
     setError('');
 
-    // Simulation (Iyi logic ihura na backend yawe)
-    if (username === 'admin' && password === 'password') {
-      login('admin'); // Bwira Context ko 'admin' yinjiye
-      navigate('/admin'); // Jyanwa kuri Admin Dashboard
-    } else if (username === 'member' && password === 'password') {
-      login('member'); // Bwira Context ko 'member' yinjiye
-      navigate('/memberdashboard'); // Jyanwa kuri Member Dashboard
+    // ToLowerCase() no Trim() bituma login yemerwa naho phone yaba yashyizemo inyuguti nini cyangwa umwanya (space)
+    const cleanUser = username.trim().toLowerCase();
+    const cleanPass = password.trim();
+
+    // Username: admin | Password: 1234
+    if (cleanUser === 'admin' && cleanPass === '1234') {
+      login('admin');
+      navigate('/admin');
+    } else if (cleanUser === 'member' && cleanPass === '12345') {
+      login('member');
+      navigate('/memberdashboard');
     } else {
-      setError('Invalid credentials. Try admin/password or member/password.');
+      setError('Username cyangwa Password ntabwo ari byo. Gerageza');
     }
   };
-  // ... (rest of the component UI code remains the same) ...
+
   return (
-    <>
+    <div className="login-full-page">
       <Navbar />
-      <div className="login-container-wrapper" style={{ marginTop: '10px' }}>
-        <div className="login-card">
-          <h2>Admin/Member Login</h2>
-          {error && <div className="error-message">{error}</div>}
-          <form onSubmit={handleLogin}>
-            {/* ... form inputs ... */}
-            <div className="form-group">
-              <label htmlFor="username">Username</label>
-              <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+      <div className="login-main-container">
+        <div className="login-card-pro">
+          <div className="login-header">
+            <h2>Welcome Back</h2>
+            <p>Admin & Member Portal</p>
+          </div>
+
+          {error && <div className="login-error-box">{error}</div>}
+
+          <form onSubmit={handleLogin} className="login-form-pro">
+            {/* USERNAME INPUT */}
+            <div className="pro-input-group">
+              <label><FaUser /> Username</label>
+              <input 
+                type="text" 
+                value={username} 
+                onChange={(e) => setUsername(e.target.value)} 
+                placeholder="Enter username"
+                autoCapitalize="none"
+                autoCorrect="off"
+                spellCheck="false"
+                required 
+              />
             </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+
+            {/* PASSWORD INPUT */}
+            <div className="pro-input-group">
+              <label><FaLock /> Password</label>
+              <div className="password-wrapper">
+                <input 
+                  type={showPassword ? "text" : "password"} 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  placeholder="Enter password"
+                  autoCapitalize="none"
+                  required 
+                />
+                <button 
+                  type="button" 
+                  className="eye-btn" 
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
             </div>
-            <button type="submit" className="login-btn">Log In</button>
+
+            <button type="submit" className="pro-login-btn">
+              Log In Now
+            </button>
           </form>
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

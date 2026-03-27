@@ -113,3 +113,9 @@
     padding: 10px 0;
   }
 }
+@media (max-width: 1024px) {
+  .nav-links {
+    gap: 15px; /* Bigabanya umwanya hagati ya menu kuri fone */
+    padding: 30px 20px;
+  }
+}

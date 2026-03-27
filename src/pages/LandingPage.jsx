@@ -31,7 +31,7 @@ export default function Landing() {
               of Tomorrow.
             </h1>
             <p className="hero-lead">
-              Imena Moves Kidz is more than a dance group—it's a launchpad for young creators. 
+              Imena Moves Kidz is more than a dance group it's a launchpad for young creators. 
               We blend traditional discipline with modern artistic excellence.
             </p>
             <div className="hero-cta-group">

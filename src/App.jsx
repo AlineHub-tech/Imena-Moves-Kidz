@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext'; // Import AuthProvider
-import ProtectedRoute from './components/ProtectedRoute'; // Import ProtectedRoute
+import { AuthProvider } from './context/AuthContext'; 
+import ProtectedRoute from './components/ProtectedRoute'; 
 
 // Import Pages
 import LandingPage from './pages/LandingPage';
@@ -11,21 +11,24 @@ import LoginPage from './pages/LoginPage';
 import ContactPage from './pages/ContactPage';
 import AboutUsPage from './pages/AboutUsPage';
 import ApplyPage from './pages/ApplyPage';
-// ... import other pages ...
+import AttendanceHistory from './pages/AttendanceHistory'; // <-- NEW IMPORT
 
 function App() {
   return (
     <Router>
-      <AuthProvider> {/* Funga App yose muri AuthProvider */}
+      <AuthProvider>
         <div className="App">
           <main>
             <Routes>
-              {/* Public Routes - Burikose ashobora kuzireba */}
+              {/* Public Routes - Anyone can view these */}
               <Route path="/" element={<LandingPage />} />
               <Route path="/apply" element={<ApplyPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/about" element={<AboutUsPage />} />
               <Route path="/login" element={<LoginPage />} />
+              
+              {/* History Route - Publicly viewable daily reports */}
+              <Route path="/history" element={<AttendanceHistory />} /> 
 
               {/* Protected Route for Members */}
               <Route element={<ProtectedRoute requiredRole="member" />}>
@@ -36,6 +39,9 @@ function App() {
               <Route element={<ProtectedRoute requiredRole="admin" />}>
                 <Route path="/admin" element={<AdminDashboard />} />
               </Route>
+
+              {/* Fallback for unknown URLs */}
+              <Route path="*" element={<LandingPage />} />
             </Routes>
           </main>
         </div>

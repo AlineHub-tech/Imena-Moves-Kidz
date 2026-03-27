@@ -17,7 +17,7 @@ const AboutUsPage = () => {
       bio: "A visionary leader committed to empowering Rwandan youth through elite motion arts and cultural excellence."
     },
     {
-      name: "Pacifique NIYONDEORA",
+      name: "Pacifique NIYONDORA",
       position: "Artistic Director",
       email: "pacifiqueniyondora@gmail.com",
       tel: "+250 791 816 222",

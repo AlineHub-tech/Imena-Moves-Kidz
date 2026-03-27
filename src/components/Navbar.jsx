@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
   FaHome, FaInfoCircle, FaEnvelope, FaUserShield, 
-  FaUserEdit, FaBars, FaTimes, FaRocket 
+  FaUserEdit, FaBars, FaTimes, FaRocket, FaHistory 
 } from "react-icons/fa";
 
 // Import your profile image
@@ -35,18 +35,28 @@ export default function Navbar() {
           <li>
             <Link onClick={toggleMenu} to="/about"><FaInfoCircle className="nav-icon" /> About Us</Link>
           </li>
+          
+          {/* HISTORY LINK NSHYA */}
+          <li>
+            <Link onClick={toggleMenu} to="/history">
+              <FaHistory className="nav-icon" /> History
+            </Link>
+          </li>
+
           <li>
             <Link onClick={toggleMenu} to="/contact"><FaEnvelope className="nav-icon" /> Contact Us</Link>
           </li>
-          {/* APPLY LINK NSHYA */}
+
           <li>
             <Link onClick={toggleMenu} to="/apply" className="apply-nav-link">
               <FaRocket className="nav-icon" /> Apply Now
             </Link>
           </li>
+
           <li>
             <Link onClick={toggleMenu} to="/login"><FaUserEdit className="nav-icon" /> Member</Link>
           </li>
+
           <li>
             <Link onClick={toggleMenu} to="/login" className="admin-link">
               <FaUserShield className="nav-icon" /> Admin

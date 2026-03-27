@@ -1,0 +1,240 @@
+/* AttendanceHistory.css */
+
+:root {
+  --primary-color: #ff4d05;
+  --bg-light: #f9f9f9;
+  --text-dark: #2d3436;
+  --text-muted: #636e72;
+  --white: #ffffff;
+  --border-color: #eee;
+  --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.history-page {
+  background-color: var(--bg-light);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+}
+
+.container-h {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* HEADER SECTION */
+.history-header {
+  background-color: var(--white);
+  padding: 60px 0 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.header-tag {
+  background: rgba(255, 77, 5, 0.1);
+  color: var(--primary-color);
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.history-header h1 {
+  font-size: 2.5rem;
+  margin: 15px 0;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.history-header h1 svg {
+  color: var(--primary-color);
+}
+
+/* ACTION BAR */
+.history-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px 0;
+}
+
+.btn-print {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn-print:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* HISTORY CARDS */
+.history-entry-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.entry-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--bg-light);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.entry-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.main-date {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-time {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.entry-stats {
+  display: flex;
+  gap: 10px;
+}
+
+.stat-p, .stat-a {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.stat-p { background: #e3fcef; color: #00b894; }
+.stat-a { background: #fff0f0; color: #ff7675; }
+
+/* TABLE STYLES */
+.attendance-list-section h4 {
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+
+.history-table th {
+  text-align: left;
+  padding: 12px;
+  background: var(--bg-light);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.history-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-p { background: #00b894; color: white; }
+.badge-a { background: #ff4d05; color: white; }
+
+/* UPDATES GRID */
+.updates-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.update-col h5 {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dark);
+}
+
+.small-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-new, .tag-collab {
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+  .history-header h1 { font-size: 1.8rem; }
+  
+  .updates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .entry-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .history-table {
+    font-size: 0.85rem;
+  }
+
+  .history-entry-card {
+    padding: 15px;
+  }
+}
+
+/* PRINT STYLES */
+@media print {
+  .no-print { display: none !important; }
+  .history-page { background: white; }
+  .history-entry-card { 
+    box-shadow: none; 
+    border: 1px solid #ccc; 
+    page-break-inside: avoid;
+  }
+}
