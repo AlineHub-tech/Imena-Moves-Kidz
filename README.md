@@ -15,11 +15,11 @@ A robust Full-Stack Management Solution designed for **Imena Moves Kidz** to str
 ---
 
 ## 📸 ScreenShoot
-
-<img width="1349" height="631" alt="fr" src="https://github.com/user-attachments/assets/c33f17f4-d5c5-48a7-a534-10057f7ba40c" />
-<img width="1354" height="632" alt="ff3" src="https://github.com/user-attachments/assets/a08971fe-155c-46a1-9470-82f922a2c1ff" />
-<img width="1346" height="636" alt="ff2" src="https://github.com/user-attachments/assets/d6f0d014-1ad7-41a8-901b-2fb5b0fbee1a" />
-<img width="1339" height="637" alt="ff1" src="https://github.com/user-attachments/assets/aefa5fae-a45b-466b-8701-8c39211274b7" />
+<img width="1350" height="636" alt="im1" src="https://github.com/user-attachments/assets/67398573-381d-475b-b70e-5f663857d8dc" />
+<img width="1349" height="633" alt="im2" src="https://github.com/user-attachments/assets/46e84142-111e-462f-b1cf-03daca720c12" />
+<img width="1351" height="636" alt="im3" src="https://github.com/user-attachments/assets/daf9c207-a4f3-41ce-b657-4df26d968af6" />
+<img width="1351" height="635" alt="im4" src="https://github.com/user-attachments/assets/bdd29a51-b390-4f5b-aacc-b8830420442b" />
+<img width="1349" height="631" alt="im5" src="https://github.com/user-attachments/assets/f40d3c7c-5a49-4808-a70e-e316703d04f1" />
 
 ---
 ## 🛠️ Technology Architecture
