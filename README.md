@@ -1,8 +1,5 @@
 # 🕺 Imena Moves Kidz - Dance Excellence Management System
 
-[![Vercel Deployment](https://img.shields.io)](https://imena-moves-kidz.vercel.app)
-[![Render Backend](https://img.shields.io)](https://imena-backend.onrender.com)
-[![MongoDB Atlas](https://img.shields.io)](https://www.mongodb.com)
 
 A robust Full-Stack Management Solution designed for **Imena Moves Kidz** to streamline dance school operations, member engagement, and daily administrative tasks.
 
