@@ -1,5 +1,6 @@
 # 🕺 Imena Moves Kidz - Dance Excellence Management System
 
+
 A robust Full-Stack Management Solution designed for **Imena Moves Kidz** to streamline dance school operations, member engagement, and daily administrative tasks.
 
 ---
